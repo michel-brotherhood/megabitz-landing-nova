@@ -32,10 +32,10 @@ const Footer = () => {
               <div className="w-8 h-8 rounded-lg bg-primary/20 flex items-center justify-center">
                 <Shield className="w-5 h-5 text-primary" />
               </div>
-              <span className="font-bold text-lg glow-text">Space 10</span>
+              <span className="font-bold text-lg glow-text">Megabitz Tecnologia</span>
             </div>
             <p className="text-sm text-muted-foreground">
-              Proteção avançada de cibersegurança para o mundo digital moderno.
+              TI sem drama. Segurança de verdade para sua empresa.
             </p>
           </div>
 
@@ -83,7 +83,7 @@ const Footer = () => {
         <div className="pt-8 border-t border-border">
           <div className="flex flex-col md:flex-row justify-between items-center gap-4">
             <p className="text-sm text-muted-foreground">
-              © 2024 Space 10. Todos os direitos reservados.
+              © 2024 Megabitz Tecnologia. Todos os direitos reservados.
             </p>
             <div className="flex gap-6">
               <a href="#" className="text-sm text-muted-foreground hover:text-primary transition-colors">

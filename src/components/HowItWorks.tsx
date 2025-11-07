@@ -5,23 +5,27 @@ const HowItWorks = () => {
   const steps = [
     {
       number: "1",
-      title: "Avaliação Inicial",
-      description: "Fazemos uma análise completa da sua infraestrutura de TI, identificando vulnerabilidades e pontos críticos que precisam de atenção."
+      title: "Diagnóstico",
+      subtitle: "0–7 dias",
+      description: "Inventário, riscos e saúde da infra."
     },
     {
       number: "2",
-      title: "Implementação",
-      description: "Instalamos e configuramos todas as camadas de segurança necessárias, desde firewalls até sistemas de detecção de intrusão."
+      title: "Plano de ação",
+      subtitle: "7–14 dias",
+      description: "Priorização por impacto e quick wins."
     },
     {
       number: "3",
-      title: "Monitoramento Contínuo",
-      description: "Acompanhamos 24/7 todos os seus sistemas, detectando e neutralizando ameaças antes que causem danos ao seu negócio."
+      title: "Onboarding",
+      subtitle: "até 30 dias",
+      description: "Padronização, políticas e backup validado."
     },
     {
       number: "4",
-      title: "Manutenção Preventiva",
-      description: "Executamos atualizações, revisões e otimizações regulares para garantir proteção máxima e desempenho ideal."
+      title: "Operação contínua",
+      subtitle: "ongoing",
+      description: "Monitoramento, preventivas e melhoria constante."
     }
   ];
 
@@ -52,7 +56,8 @@ const HowItWorks = () => {
                 <div className="w-16 h-16 rounded-full bg-gradient-to-br from-primary to-secondary flex items-center justify-center mb-6 text-3xl font-bold text-background shadow-lg">
                   {step.number}
                 </div>
-                <h3 className="text-xl font-bold mb-4 text-primary">{step.title}</h3>
+                <h3 className="text-xl font-bold mb-2 text-primary">{step.title}</h3>
+                <p className="text-sm text-primary/60 mb-3">{step.subtitle}</p>
                 <p className="text-foreground/80 text-sm leading-relaxed">{step.description}</p>
               </div>
               
@@ -67,7 +72,7 @@ const HowItWorks = () => {
         <div className="text-center">
           <Button variant="hero" size="lg" className="hover:scale-105 transition-all duration-300">
             <CheckCircle2 className="mr-2 h-5 w-5" />
-            Solicitar Avaliação Gratuita
+            Iniciar diagnóstico
           </Button>
         </div>
       </div>

@@ -17,26 +17,26 @@ const Hero = () => {
           <div className="space-y-8 animate-fade-in-up">
             <div className="inline-flex items-center gap-2 px-4 py-2 rounded-full glass-effect hover:border-primary/50 transition-all duration-300">
               <Shield className="w-4 h-4 text-primary" />
-              <span className="text-sm text-foreground/80">Portfólio</span>
+              <span className="text-sm text-foreground/80">Megabitz Tecnologia</span>
             </div>
             
             <h1 className="text-5xl md:text-7xl font-bold leading-tight">
-              <span className="gradient-text block animate-fade-in-up" style={{ animationDelay: '0.2s' }}>Proteja Sua Empresa</span>
-              <span className="glow-text block animate-fade-in-up" style={{ animationDelay: '0.4s' }}>com Segurança de Ponta</span>
+              <span className="gradient-text block animate-fade-in-up" style={{ animationDelay: '0.2s' }}>TI sem drama.</span>
+              <span className="glow-text block animate-fade-in-up" style={{ animationDelay: '0.4s' }}>Segurança de verdade.</span>
             </h1>
             
             <p className="text-lg text-foreground/90 max-w-lg animate-fade-in-up leading-relaxed" style={{ animationDelay: '0.6s' }}>
-              Mantenha seus dados e sistemas protegidos com nossa solução completa de cibersegurança. 
-              <strong className="text-primary"> Evite ataques e garanta continuidade</strong> com monitoramento 24/7 e tecnologia avançada.
+              Contrato de manutenção de TI + segurança gerenciada para empresas. 
+              <strong className="text-primary"> Monitoramento 24/7, preventivas, SLA claro,</strong> backup 3-2-1 testado e suporte humano quando você precisa.
             </p>
             
             <div className="flex flex-wrap gap-4 animate-fade-in-up" style={{ animationDelay: '0.8s' }}>
               <Button variant="hero" size="lg" className="group hover:scale-105 transition-all duration-300">
-                Solicitar Proposta
+                Quero uma proposta em 2 minutos
                 <ArrowRight className="ml-2 h-4 w-4 transition-transform group-hover:translate-x-2" />
               </Button>
               <Button variant="outline" size="lg" className="glass-effect hover:scale-105 transition-all duration-300">
-                Conhecer Soluções
+                Falar no WhatsApp agora
               </Button>
             </div>
           </div>

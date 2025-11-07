@@ -21,7 +21,7 @@ const Navigation = () => {
             <div className="w-8 h-8 rounded-lg bg-primary/20 flex items-center justify-center group-hover:bg-primary/30 group-hover:scale-110 transition-all duration-300">
               <Shield className="w-5 h-5 text-primary group-hover:drop-shadow-[0_0_8px_hsl(var(--primary))]" />
             </div>
-            <span className="font-bold text-lg glow-text group-hover:scale-105 transition-transform">Space 10</span>
+            <span className="font-bold text-lg glow-text group-hover:scale-105 transition-transform">Megabitz</span>
           </div>
 
           {/* Desktop Menu */}
