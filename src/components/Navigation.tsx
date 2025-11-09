@@ -14,7 +14,7 @@ const Navigation = () => {
   ];
 
   return (
-    <nav className="fixed top-0 left-0 right-0 z-50 glass-effect border-b border-border/50">
+    <nav className="fixed top-0 left-0 right-0 z-50 bg-transparent backdrop-blur-sm">
       <div className="container mx-auto px-4">
         <div className="flex items-center justify-between h-16">
           {/* Logo */}
@@ -22,29 +22,25 @@ const Navigation = () => {
             <img 
               src={megabitzLogo} 
               alt="Megabitz Tecnologia" 
-              className="h-8 w-auto group-hover:scale-105 transition-transform duration-300"
+              className="h-10 w-auto group-hover:scale-105 transition-transform duration-300"
             />
           </div>
 
           {/* Desktop Menu */}
-          <div className="hidden md:flex items-center gap-8">
+          <div className="hidden md:flex items-center gap-12">
             {menuItems.map((item, index) => (
               <a
                 key={index}
                 href={item.href}
-                className="text-sm text-muted-foreground hover:text-primary transition-all duration-300 relative after:absolute after:bottom-0 after:left-0 after:w-0 after:h-0.5 after:bg-primary after:transition-all after:duration-300 hover:after:w-full"
+                className="text-sm font-semibold text-white hover:text-primary transition-all duration-300 tracking-wider uppercase"
               >
                 {item.label}
               </a>
             ))}
           </div>
 
-          {/* CTA */}
-          <div className="hidden md:block">
-            <Button variant="hero" size="sm">
-              Contato
-            </Button>
-          </div>
+          {/* Empty space for layout balance */}
+          <div className="hidden md:block w-20" />
 
           {/* Mobile Menu Button */}
           <button

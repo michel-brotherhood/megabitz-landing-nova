@@ -1,58 +1,68 @@
 import { Button } from "@/components/ui/button";
-import { ArrowRight, Shield } from "lucide-react";
-import heroVideo from "@/assets/hero-video.mp4";
+import { Facebook, Twitter, Instagram } from "lucide-react";
+import heroBackground from "@/assets/hero-background.jpg";
 
 const Hero = () => {
   return (
-    <section className="relative min-h-screen flex items-center justify-center overflow-hidden px-4 py-20">
-      {/* Background effects */}
-      <div className="absolute inset-0 bg-gradient-to-b from-background via-background to-muted/20" />
-      <div className="absolute top-1/4 left-1/4 w-96 h-96 bg-primary/10 rounded-full blur-3xl animate-pulse" />
-      <div className="absolute bottom-1/4 right-1/4 w-96 h-96 bg-secondary/10 rounded-full blur-3xl animate-pulse" style={{ animationDelay: '1s' }} />
+    <section className="relative min-h-screen flex items-center justify-center overflow-hidden pt-16">
+      {/* Background Image */}
+      <div 
+        className="absolute inset-0 bg-cover bg-center bg-no-repeat"
+        style={{ backgroundImage: `url(${heroBackground})` }}
+      />
       
-      <div className="container relative z-10 mx-auto">
-        <div className="grid lg:grid-cols-2 gap-12 items-center">
-          {/* Left content */}
-          <div className="space-y-8 animate-fade-in-up">
-            <div className="inline-flex items-center gap-2 px-4 py-2 rounded-full glass-effect hover:border-primary/50 transition-all duration-300">
-              <Shield className="w-4 h-4 text-primary" />
-              <span className="text-sm text-foreground/80">Megabitz Tecnologia</span>
-            </div>
-            
-            <h1 className="text-5xl md:text-7xl font-bold leading-tight">
-              <span className="gradient-text block animate-fade-in-up" style={{ animationDelay: '0.2s' }}>TI sem drama.</span>
-              <span className="glow-text block animate-fade-in-up" style={{ animationDelay: '0.4s' }}>Segurança de verdade.</span>
-            </h1>
-            
-            <p className="text-lg text-foreground/90 max-w-lg animate-fade-in-up leading-relaxed" style={{ animationDelay: '0.6s' }}>
-              Contrato de manutenção de TI + segurança gerenciada para empresas. 
-              <strong className="text-primary"> Monitoramento 24/7, preventivas, SLA claro,</strong> backup 3-2-1 testado e suporte humano quando você precisa.
+      {/* Overlay */}
+      <div className="absolute inset-0 bg-background/40" />
+      
+      <div className="container relative z-10 mx-auto px-4 flex flex-col items-center justify-center min-h-[calc(100vh-4rem)] text-center">
+        {/* Main Content */}
+        <div className="max-w-4xl space-y-8">
+          <h1 className="text-6xl md:text-8xl font-bold leading-tight tracking-wider">
+            <span className="block text-white">TECHNOLOGY</span>
+            <span className="block text-white">INNOVATION</span>
+          </h1>
+          
+          <div className="w-full max-w-2xl mx-auto">
+            <div className="h-px bg-white/50 mb-8" />
+            <p className="text-lg text-white/90 leading-relaxed px-4">
+              Lorem ipsum dolor sit amet, consectetuer adipiscing elit, sed diam nonummy nibh euismod tincidunt ut laoreet dolore magna.
             </p>
-            
-            <div className="flex flex-wrap gap-4 animate-fade-in-up" style={{ animationDelay: '0.8s' }}>
-              <Button variant="hero" size="lg" className="group hover:scale-105 transition-all duration-300">
-                Quero uma proposta em 2 minutos
-                <ArrowRight className="ml-2 h-4 w-4 transition-transform group-hover:translate-x-2" />
-              </Button>
-              <Button variant="outline" size="lg" className="glass-effect hover:scale-105 transition-all duration-300">
-                Falar no WhatsApp agora
-              </Button>
-            </div>
           </div>
           
-          {/* Right content - Video */}
-          <div className="relative animate-fade-in-up" style={{ animationDelay: '0.4s' }}>
-            <div className="relative z-10">
-              <video 
-                src={heroVideo}
-                autoPlay
-                loop
-                muted
-                playsInline
-                className="w-full rounded-lg card-glow transform hover:scale-105 transition-all duration-500"
-              />
-            </div>
+          <div className="pt-4">
+            <Button 
+              variant="outline" 
+              size="lg" 
+              className="border-2 border-white text-white hover:bg-white hover:text-background px-12 py-6 text-lg font-semibold"
+            >
+              MORE INFO
+            </Button>
           </div>
+        </div>
+        
+        {/* Social Media Icons - Bottom Right */}
+        <div className="absolute bottom-8 right-8 flex gap-4">
+          <a href="https://www.facebook.com/megabitztecnologia" target="_blank" rel="noopener noreferrer" className="w-12 h-12 flex items-center justify-center border-2 border-white text-white hover:bg-white hover:text-background transition-all duration-300">
+            <Facebook className="w-6 h-6" />
+          </a>
+          <a href="#" className="w-12 h-12 flex items-center justify-center border-2 border-white text-white hover:bg-white hover:text-background transition-all duration-300">
+            <Twitter className="w-6 h-6" />
+          </a>
+          <a href="https://www.instagram.com/megabitztecnologia/" target="_blank" rel="noopener noreferrer" className="w-12 h-12 flex items-center justify-center border-2 border-white text-white hover:bg-white hover:text-background transition-all duration-300">
+            <Instagram className="w-6 h-6" />
+          </a>
+        </div>
+        
+        {/* Carousel Indicators */}
+        <div className="absolute bottom-8 left-1/2 -translate-x-1/2 flex gap-3">
+          <button className="w-3 h-3 rounded-full border-2 border-white bg-transparent hover:bg-white transition-all duration-300" />
+          <button className="w-3 h-3 rounded-full border-2 border-white bg-white" />
+          <button className="w-3 h-3 rounded-full border-2 border-white bg-transparent hover:bg-white transition-all duration-300" />
+        </div>
+        
+        {/* Footer Credit */}
+        <div className="absolute bottom-2 left-1/2 -translate-x-1/2 text-white/70 text-sm">
+          designed by freepik
         </div>
       </div>
     </section>
