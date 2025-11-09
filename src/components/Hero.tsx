@@ -17,7 +17,7 @@ const Hero = () => {
       </video>
       
       {/* Overlay */}
-      <div className="absolute inset-0 bg-black/70" />
+      <div className="absolute inset-0 bg-black/80" />
       
       <div className="container relative z-10 mx-auto px-4 flex flex-col items-center justify-center min-h-[calc(100vh-4rem)] text-center">
         {/* Main Content */}
@@ -35,7 +35,7 @@ const Hero = () => {
           
           <div className="pt-4">
             <button 
-              className="relative px-12 py-4 text-[15px] font-bold rounded-2xl outline-none transition-all duration-300"
+              className="relative px-12 py-4 text-[15px] font-bold rounded-2xl outline-none transition-all duration-300 uppercase"
               style={{
                 color: '#6BE4E4',
                 backgroundColor: 'rgb(30, 80, 80)',
