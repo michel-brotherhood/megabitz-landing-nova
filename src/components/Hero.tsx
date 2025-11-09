@@ -1,15 +1,20 @@
 import { Button } from "@/components/ui/button";
-import { Facebook, Twitter, Instagram } from "lucide-react";
-import heroBackground from "@/assets/hero-background.jpg";
+import { Facebook, Twitter, Instagram, MessageCircle } from "lucide-react";
+import heroVideo from "@/assets/hero-video.mp4";
 
 const Hero = () => {
   return (
     <section className="relative min-h-screen flex items-center justify-center overflow-hidden pt-16">
-      {/* Background Image */}
-      <div 
-        className="absolute inset-0 bg-cover bg-center bg-no-repeat"
-        style={{ backgroundImage: `url(${heroBackground})` }}
-      />
+      {/* Background Video */}
+      <video 
+        autoPlay 
+        loop 
+        muted 
+        playsInline
+        className="absolute inset-0 w-full h-full object-cover"
+      >
+        <source src={heroVideo} type="video/mp4" />
+      </video>
       
       {/* Overlay */}
       <div className="absolute inset-0 bg-background/40" />
@@ -65,6 +70,17 @@ const Hero = () => {
           designed by freepik
         </div>
       </div>
+      
+      {/* WhatsApp Button */}
+      <a 
+        href="https://wa.me/5511999999999" 
+        target="_blank" 
+        rel="noopener noreferrer"
+        className="fixed bottom-6 left-6 z-50 w-14 h-14 bg-[#25D366] rounded-full flex items-center justify-center shadow-lg hover:scale-110 transition-transform animate-pulse"
+        aria-label="Contato WhatsApp"
+      >
+        <MessageCircle className="w-7 h-7 text-white" />
+      </a>
     </section>
   );
 };
