@@ -17,7 +17,7 @@ const Hero = () => {
       </video>
       
       {/* Overlay */}
-      <div className="absolute inset-0 bg-black/60" />
+      <div className="absolute inset-0 bg-black/70" />
       
       <div className="container relative z-10 mx-auto px-4 flex flex-col items-center justify-center min-h-[calc(100vh-4rem)] text-center">
         {/* Main Content */}
@@ -37,31 +37,31 @@ const Hero = () => {
             <button 
               className="relative px-12 py-4 text-[15px] font-bold rounded-2xl outline-none transition-all duration-300"
               style={{
-                color: 'rgb(217, 176, 255)',
-                backgroundColor: 'rgb(100, 61, 136)',
-                border: '.25em solid rgb(217, 176, 255)',
-                boxShadow: '0 0 1em .25em rgb(217, 176, 255), 0 0 4em 1em rgba(191, 123, 255, 0.781), inset 0 0 .75em .25em rgb(217, 176, 255)',
-                textShadow: '0 0 .5em rgb(217, 176, 255)'
+                color: '#6BE4E4',
+                backgroundColor: 'rgb(30, 80, 80)',
+                border: '.25em solid #6BE4E4',
+                boxShadow: '0 0 1em .25em #6BE4E4, 0 0 4em 1em rgba(107, 228, 228, 0.6), inset 0 0 .75em .25em #6BE4E4',
+                textShadow: '0 0 .5em #6BE4E4'
               }}
               onMouseEnter={(e) => {
-                e.currentTarget.style.color = 'rgb(100, 61, 136)';
-                e.currentTarget.style.backgroundColor = 'rgb(217, 176, 255)';
-                e.currentTarget.style.boxShadow = '0 0 1em .25em rgb(217, 176, 255), 0 0 4em 2em rgba(191, 123, 255, 0.781), inset 0 0 .75em .25em rgb(217, 176, 255)';
+                e.currentTarget.style.color = 'rgb(30, 80, 80)';
+                e.currentTarget.style.backgroundColor = '#6BE4E4';
+                e.currentTarget.style.boxShadow = '0 0 1em .25em #6BE4E4, 0 0 4em 2em rgba(107, 228, 228, 0.6), inset 0 0 .75em .25em #6BE4E4';
               }}
               onMouseLeave={(e) => {
-                e.currentTarget.style.color = 'rgb(217, 176, 255)';
-                e.currentTarget.style.backgroundColor = 'rgb(100, 61, 136)';
-                e.currentTarget.style.boxShadow = '0 0 1em .25em rgb(217, 176, 255), 0 0 4em 1em rgba(191, 123, 255, 0.781), inset 0 0 .75em .25em rgb(217, 176, 255)';
+                e.currentTarget.style.color = '#6BE4E4';
+                e.currentTarget.style.backgroundColor = 'rgb(30, 80, 80)';
+                e.currentTarget.style.boxShadow = '0 0 1em .25em #6BE4E4, 0 0 4em 1em rgba(107, 228, 228, 0.6), inset 0 0 .75em .25em #6BE4E4';
               }}
               onMouseDown={(e) => {
-                e.currentTarget.style.boxShadow = '0 0 0.6em .25em rgb(217, 176, 255), 0 0 2.5em 2em rgba(191, 123, 255, 0.781), inset 0 0 .5em .25em rgb(217, 176, 255)';
+                e.currentTarget.style.boxShadow = '0 0 0.6em .25em #6BE4E4, 0 0 2.5em 2em rgba(107, 228, 228, 0.6), inset 0 0 .5em .25em #6BE4E4';
               }}
             >
               Falar com um especialista
               <span 
                 className="absolute top-[120%] left-0 h-full w-full opacity-70 pointer-events-none"
                 style={{
-                  backgroundColor: 'rgba(191, 123, 255, 0.781)',
+                  backgroundColor: 'rgba(107, 228, 228, 0.6)',
                   filter: 'blur(2em)',
                   transform: 'perspective(1.5em) rotateX(35deg) scale(1, .6)'
                 }}
