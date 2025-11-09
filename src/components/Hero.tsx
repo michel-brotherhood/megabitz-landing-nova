@@ -1,7 +1,6 @@
 import { Button } from "@/components/ui/button";
 import { ArrowRight, Shield } from "lucide-react";
-import heroShield from "@/assets/hero-shield.jpg";
-import laptopMockup from "@/assets/laptop-mockup.jpg";
+import heroVideo from "@/assets/hero-video.mp4";
 
 const Hero = () => {
   return (
@@ -41,19 +40,17 @@ const Hero = () => {
             </div>
           </div>
           
-          {/* Right content - Device mockups */}
+          {/* Right content - Video */}
           <div className="relative animate-fade-in-up" style={{ animationDelay: '0.4s' }}>
             <div className="relative z-10">
-              <img 
-                src={laptopMockup} 
-                alt="Security Dashboard" 
-                className="w-full rounded-lg card-glow transform hover:scale-105 hover:rotate-1 transition-all duration-500"
+              <video 
+                src={heroVideo}
+                autoPlay
+                loop
+                muted
+                playsInline
+                className="w-full rounded-lg card-glow transform hover:scale-105 transition-all duration-500"
               />
-            </div>
-            
-            {/* Floating shield */}
-            <div className="absolute -top-20 -right-20 w-64 h-64 opacity-50 animate-float">
-              <img src={heroShield} alt="Security Shield" className="w-full h-full object-contain drop-shadow-2xl" />
             </div>
           </div>
         </div>

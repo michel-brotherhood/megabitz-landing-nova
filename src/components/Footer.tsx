@@ -1,4 +1,4 @@
-import { Shield } from "lucide-react";
+import { Shield, Instagram, Facebook } from "lucide-react";
 
 const Footer = () => {
   const footerLinks = {
@@ -37,6 +37,40 @@ const Footer = () => {
             <p className="text-sm text-muted-foreground">
               TI sem drama. Segurança de verdade para sua empresa.
             </p>
+            <div className="space-y-1 text-sm text-muted-foreground">
+              <p className="font-medium">CNPJ: 10.610.465/0001-18</p>
+              <p>Rua Barão de São Francisco, 373</p>
+              <p>Sala 312 – Vila Isabel, Rio de Janeiro</p>
+              <p className="text-primary">comercial@megabitz.com.br</p>
+            </div>
+            <div className="flex gap-4 pt-2">
+              <a 
+                href="https://www.instagram.com/megabitztecnologia/" 
+                target="_blank" 
+                rel="noopener noreferrer"
+                className="text-muted-foreground hover:text-primary transition-colors"
+                aria-label="Instagram"
+              >
+                <Instagram className="h-5 w-5" />
+              </a>
+              <a 
+                href="https://www.facebook.com/megabitztecnologia" 
+                target="_blank" 
+                rel="noopener noreferrer"
+                className="text-muted-foreground hover:text-primary transition-colors"
+                aria-label="Facebook"
+              >
+                <Facebook className="h-5 w-5" />
+              </a>
+              <a 
+                href="https://www.google.com/search?q=megabitz+tecnologia&sourceid=chrome&ie=UTF-8#lrd=0x997e75742ac2a9:0x7eadf9bd117d7cb,1,,,," 
+                target="_blank" 
+                rel="noopener noreferrer"
+                className="text-sm text-muted-foreground hover:text-primary transition-colors flex items-center"
+              >
+                Avaliações
+              </a>
+            </div>
           </div>
 
           {/* Links */}

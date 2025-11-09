@@ -5,27 +5,23 @@ const HowItWorks = () => {
   const steps = [
     {
       number: "1",
-      title: "Diagnóstico",
-      subtitle: "0–7 dias",
-      description: "Inventário, riscos e saúde da infra."
+      title: "Avaliação Inicial",
+      description: "Fazemos uma análise da sua infraestrutura de TI, identificando pontos críticos e melhorias necessárias."
     },
     {
       number: "2",
-      title: "Plano de ação",
-      subtitle: "7–14 dias",
-      description: "Priorização por impacto e quick wins."
+      title: "Monitoramento",
+      description: "Acompanhamos continuamente seus sistemas, detectando e corrigindo problemas antes que eles impactem o seu negócio."
     },
     {
       number: "3",
-      title: "Onboarding",
-      subtitle: "até 30 dias",
-      description: "Padronização, políticas e backup validado."
+      title: "Manutenção Preventiva",
+      description: "Executamos atualizações, revisões e otimizações regulares para garantir que tudo funcione da melhor maneira possível."
     },
     {
       number: "4",
-      title: "Operação contínua",
-      subtitle: "ongoing",
-      description: "Monitoramento, preventivas e melhoria constante."
+      title: "Suporte Imediato",
+      description: "Em caso de emergências, nossa equipe está pronta para resolver incidentes de forma remota ou presencial."
     }
   ];
 
@@ -36,9 +32,9 @@ const HowItWorks = () => {
       <div className="container mx-auto relative z-10">
         <div className="max-w-3xl mx-auto text-center mb-16">
           <h2 className="text-4xl md:text-5xl font-bold mb-6">
-            <span className="glow-text">Como Funciona</span>
+            <span className="glow-text">Como Funciona o</span>
             <br />
-            <span className="gradient-text">Nossa Proteção?</span>
+            <span className="gradient-text">processo de Manutenção?</span>
           </h2>
           <p className="text-lg text-foreground/80">
             Um processo simples e eficiente para manter sua empresa sempre protegida
@@ -56,8 +52,7 @@ const HowItWorks = () => {
                 <div className="w-16 h-16 rounded-full bg-gradient-to-br from-primary to-secondary flex items-center justify-center mb-6 text-3xl font-bold text-background shadow-lg">
                   {step.number}
                 </div>
-                <h3 className="text-xl font-bold mb-2 text-primary">{step.title}</h3>
-                <p className="text-sm text-primary/60 mb-3">{step.subtitle}</p>
+                <h3 className="text-xl font-bold mb-4 text-primary">{step.title}</h3>
                 <p className="text-foreground/80 text-sm leading-relaxed">{step.description}</p>
               </div>
               
