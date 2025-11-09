@@ -4,7 +4,6 @@ import TrustSection from "@/components/TrustSection";
 import TechSpecs from "@/components/TechSpecs";
 import WhatsIncluded from "@/components/WhatsIncluded";
 import HowItWorks from "@/components/HowItWorks";
-import PricingPlans from "@/components/PricingPlans";
 import Differentials from "@/components/Differentials";
 import FAQ from "@/components/FAQ";
 import AboutMegabitz from "@/components/AboutMegabitz";
@@ -20,7 +19,6 @@ const Index = () => {
       <TechSpecs />
       <WhatsIncluded />
       <HowItWorks />
-      <PricingPlans />
       <Differentials />
       <FAQ />
       <AboutMegabitz />
