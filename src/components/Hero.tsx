@@ -22,21 +22,24 @@ const Hero = () => {
       <div className="container relative z-10 mx-auto px-4 sm:px-6 flex flex-col items-center justify-center min-h-[calc(100vh-4rem)] text-center pb-20 sm:pb-8">
         {/* Main Content */}
         <div className="max-w-4xl space-y-6 sm:space-y-8">
-          <h1 className="text-2xl sm:text-4xl md:text-5xl lg:text-6xl font-bold leading-relaxed sm:leading-tight">
+          <h1 className="text-2xl sm:text-4xl md:text-5xl lg:text-6xl font-bold leading-relaxed sm:leading-tight animate-fade-in">
             <span className="block text-white mb-3 sm:mb-4">Outsourcing de TI com Alocação de</span>
             <span className="block text-white">Profissionais Especialistas para sua empresa.</span>
           </h1>
           
-          <div className="w-full max-w-3xl mx-auto">
+          <div className="w-full max-w-3xl mx-auto animate-fade-in" style={{ animationDelay: '0.2s' }}>
             <div className="h-px bg-white/50 mb-6 sm:mb-8" />
             <p className="text-base sm:text-lg text-white/90 leading-relaxed px-2 sm:px-4">
               Contamos com profissionais experientes e prontos para atuar imediatamente, proporcionando o suporte necessário para que sua empresa alcance melhores resultados de forma ágil e eficiente.
             </p>
           </div>
           
-          <div className="pt-4 sm:pt-6">
-            <button 
-              className="relative px-8 sm:px-12 py-3 sm:py-4 text-sm sm:text-[15px] font-bold rounded-2xl outline-none transition-all duration-300 uppercase"
+          <div className="pt-4 sm:pt-6 animate-fade-in" style={{ animationDelay: '0.4s' }}>
+            <a 
+              href="https://wa.me/552136497932"
+              target="_blank"
+              rel="noopener noreferrer"
+              className="relative inline-block px-8 sm:px-12 py-3 sm:py-4 text-sm sm:text-[15px] font-bold rounded-2xl outline-none transition-all duration-300 uppercase cursor-pointer"
               style={{
                 color: '#6BE4E4',
                 backgroundColor: 'rgb(30, 80, 80)',
@@ -67,12 +70,12 @@ const Hero = () => {
                   transform: 'perspective(1.5em) rotateX(35deg) scale(1, .6)'
                 }}
               />
-            </button>
+            </a>
           </div>
         </div>
         
         {/* Social Media Icons - Bottom Right */}
-        <div className="absolute bottom-8 right-4 sm:right-8 flex gap-2 sm:gap-3">
+        <div className="absolute bottom-8 right-4 sm:right-8 flex gap-2 sm:gap-3 animate-fade-in" style={{ animationDelay: '0.6s' }}>
           <a href="https://www.instagram.com/megabitztecnologia/" target="_blank" rel="noopener noreferrer" className="w-8 h-8 sm:w-10 sm:h-10 flex items-center justify-center border-2 border-white text-white hover:bg-white hover:text-background transition-all duration-300">
             <Instagram className="w-4 h-4 sm:w-5 sm:h-5" />
           </a>
@@ -92,7 +95,7 @@ const Hero = () => {
       
       {/* WhatsApp Button */}
       <a 
-        href="https://wa.me/5511999999999" 
+        href="https://wa.me/552136497932" 
         target="_blank" 
         rel="noopener noreferrer"
         className="fixed bottom-4 left-4 sm:bottom-6 sm:left-6 z-50 w-12 h-12 sm:w-14 sm:h-14 bg-[#25D366] rounded-full flex items-center justify-center shadow-lg hover:scale-110 transition-transform animate-pulse"
