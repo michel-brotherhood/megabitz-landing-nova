@@ -1,6 +1,7 @@
 import { Button } from "@/components/ui/button";
-import { Menu, Shield } from "lucide-react";
+import { Menu } from "lucide-react";
 import { useState } from "react";
+import megabitzLogo from "@/assets/megabitz-logo.png";
 
 const Navigation = () => {
   const [isOpen, setIsOpen] = useState(false);
@@ -17,11 +18,12 @@ const Navigation = () => {
       <div className="container mx-auto px-4">
         <div className="flex items-center justify-between h-16">
           {/* Logo */}
-          <div className="flex items-center gap-2 group cursor-pointer">
-            <div className="w-8 h-8 rounded-lg bg-primary/20 flex items-center justify-center group-hover:bg-primary/30 group-hover:scale-110 transition-all duration-300">
-              <Shield className="w-5 h-5 text-primary group-hover:drop-shadow-[0_0_8px_hsl(var(--primary))]" />
-            </div>
-            <span className="font-bold text-lg glow-text group-hover:scale-105 transition-transform">Megabitz</span>
+          <div className="flex items-center group cursor-pointer">
+            <img 
+              src={megabitzLogo} 
+              alt="Megabitz Tecnologia" 
+              className="h-8 w-auto group-hover:scale-105 transition-transform duration-300"
+            />
           </div>
 
           {/* Desktop Menu */}
