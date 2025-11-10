@@ -138,7 +138,7 @@ Desafio: ${formData.desafio}
 
 Gostaria de falar com um consultor sobre os serviços da Megabitz.`;
 
-    const whatsappUrl = `https://wa.me/552136497932?text=${encodeURIComponent(message)}`;
+    const whatsappUrl = `https://api.whatsapp.com/send/?phone=552136497932&text=${encodeURIComponent(message)}&type=phone_number&app_absent=0`;
     window.open(whatsappUrl, '_blank');
 
     toast({
@@ -193,7 +193,7 @@ Gostaria de falar com um consultor sobre os serviços da Megabitz.`;
             
             <div className="pt-4 sm:pt-6 animate-fade-in flex justify-center lg:justify-start" style={{ animationDelay: '0.4s' }}>
               <a 
-                href="https://wa.me/552136497932"
+                href="https://api.whatsapp.com/send/?phone=552136497932&text&type=phone_number&app_absent=0"
                 target="_blank"
                 rel="noopener noreferrer"
                 className="relative inline-flex items-center gap-2 px-8 sm:px-12 py-3 sm:py-4 text-sm sm:text-[15px] font-bold rounded-2xl outline-none transition-all duration-300 uppercase cursor-pointer"

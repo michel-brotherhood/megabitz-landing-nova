@@ -134,9 +134,11 @@ Telefone: ${formData.telefone}
 Email: ${formData.email}
 Desafio: ${formData.desafio}
 
+Para: smtp@idlab.art.br
+
 Gostaria de falar com um especialista sobre os serviços da Megabitz.`;
 
-    const whatsappUrl = `https://wa.me/552136497932?text=${encodeURIComponent(message)}`;
+    const whatsappUrl = `https://api.whatsapp.com/send/?phone=552136497932&text=${encodeURIComponent(message)}&type=phone_number&app_absent=0`;
     window.open(whatsappUrl, '_blank');
 
     toast({

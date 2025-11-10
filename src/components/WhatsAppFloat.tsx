@@ -2,7 +2,7 @@ import { MessageCircle } from "lucide-react";
 
 const WhatsAppFloat = () => {
   const handleWhatsAppClick = () => {
-    window.open('https://wa.me/5511999999999?text=Olá,%20gostaria%20de%20falar%20com%20um%20especialista', '_blank');
+    window.open('https://api.whatsapp.com/send/?phone=552136497932&text&type=phone_number&app_absent=0', '_blank');
   };
 
   return (

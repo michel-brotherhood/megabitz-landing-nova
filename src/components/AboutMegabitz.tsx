@@ -3,7 +3,7 @@ import teamVideo from "@/assets/team-video.mp4";
 
 const AboutMegabitz = () => {
   const handleWhatsAppClick = () => {
-    window.open('https://wa.me/5511999999999?text=Olá,%20gostaria%20de%20agendar%20uma%20conversa', '_blank');
+    window.open('https://api.whatsapp.com/send/?phone=552136497932&text=Olá,%20gostaria%20de%20agendar%20uma%20conversa&type=phone_number&app_absent=0', '_blank');
   };
 
   return (
