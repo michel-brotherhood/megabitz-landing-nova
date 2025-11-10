@@ -7,25 +7,25 @@ const Testimonials = () => {
   
   const testimonials = [
     {
-      name: "Fernanda Oliveira",
-      avatar: "FO",
-      time: "Há 3 dias",
-      rating: 5,
-      text: "Comprei cortinas e pisos vinílicos. Ficou perfeito! A instalação foi rápida e muito bem feita. Super recomendo!"
-    },
-    {
-      name: "Pedro Henrique",
-      avatar: "PH",
+      name: "Carlos Eduardo Silva",
+      avatar: "CE",
       time: "Há 2 semanas",
       rating: 5,
-      text: "Loja completa com tudo que você precisa para decorar sua casa. Preços competitivos e qualidade excepcional."
+      text: "Excelente suporte técnico! Resolveram nosso problema de rede rapidamente. A equipe é muito profissional e sempre disponível para ajudar."
     },
     {
-      name: "Juliana Martins",
-      avatar: "JM",
-      time: "Há 1 semana",
+      name: "Mariana Costa",
+      avatar: "MC",
+      time: "Há 1 mês",
       rating: 5,
-      text: "Adorei os tecidos! Variedade incrível de estampas e cores. O atendimento foi super atencioso e me ajudaram a escolher o melhor para minha sala."
+      text: "Implementaram toda a infraestrutura de TI da nossa empresa. Projeto executado com perfeição, dentro do prazo e orçamento. Recomendo demais!"
+    },
+    {
+      name: "Roberto Almeida",
+      avatar: "RA",
+      time: "Há 3 semanas",
+      rating: 5,
+      text: "Serviço de segurança da informação impecável. Nos sentimos muito mais seguros após a consultoria e implementação das soluções. Equipe técnica de alto nível!"
     }
   ];
 
