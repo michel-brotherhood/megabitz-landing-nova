@@ -148,21 +148,11 @@ const Hero = () => {
 
       toast({
         title: "Mensagem enviada!",
-        description: "Em breve entraremos em contato.",
+        description: "Redirecionando...",
       });
 
-      // Reset form
-      setFormData({
-        nome: "",
-        empresa: "",
-        tamanhoEmpresa: "",
-        telefone: "",
-        email: "",
-        desafio: "",
-        aceitaPolitica: false
-      });
-      setErrors({});
-      setTouched({});
+      // Redirect to thank you page
+      window.location.href = '/obrigado';
     } catch (error) {
       console.error("Error sending email:", error);
       toast({
