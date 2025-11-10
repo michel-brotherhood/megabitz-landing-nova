@@ -7,18 +7,18 @@ const AboutMegabitz = () => {
   };
 
   return (
-    <section id="sobre" className="py-24 px-4 bg-gradient-to-b from-background to-muted/10">
+    <section id="sobre" className="py-16 md:py-24 px-4 bg-gradient-to-b from-background to-muted/10">
       <div className="container mx-auto">
         <div className="max-w-7xl mx-auto">
-          <div className="grid md:grid-cols-2 gap-12 items-center animate-fade-in">
+          <div className="grid md:grid-cols-2 gap-8 md:gap-12 items-center animate-fade-in">
             {/* Text Content - Left */}
-            <div className="space-y-6">
-              <h2 className="text-4xl md:text-5xl font-bold">
+            <div className="space-y-4 md:space-y-6">
+              <h2 className="text-3xl sm:text-4xl md:text-5xl font-bold">
                 <span className="glow-text">Sobre a</span>
                 <br />
                 <span className="gradient-text">Megabitz</span>
               </h2>
-              <div className="space-y-4 text-lg text-foreground/80 leading-relaxed">
+              <div className="space-y-3 md:space-y-4 text-sm sm:text-base md:text-lg text-foreground/80 leading-relaxed">
                 <p>
                   A MEGABITZ Tecnologia tem a Solução para diversas barreiras que limitam o resultado da sua empresa.
                 </p>
@@ -30,7 +30,7 @@ const AboutMegabitz = () => {
               <Button 
                 onClick={handleWhatsAppClick}
                 size="lg"
-                className="mt-6"
+                className="mt-4 md:mt-6 w-full sm:w-auto text-sm sm:text-base"
               >
                 Agende uma conversa com os nossos Consultores
               </Button>
