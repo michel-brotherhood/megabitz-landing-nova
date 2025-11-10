@@ -8,6 +8,7 @@ import { useState } from "react";
 import { useToast } from "@/hooks/use-toast";
 import { supabase } from "@/integrations/supabase/client";
 import heroVideo from "@/assets/hero-video.mp4";
+import professionalPhoto from "@/assets/professional-photo.webp";
 
 const Hero = () => {
   const { toast } = useToast();
@@ -185,11 +186,23 @@ const Hero = () => {
         <div className="grid lg:grid-cols-2 gap-8 lg:gap-12 items-center min-h-[calc(100vh-8rem)]">
           {/* Left Column - Content */}
           <div className="space-y-6 sm:space-y-8 text-center lg:text-left">
-            <h1 className="text-3xl sm:text-4xl md:text-5xl lg:text-6xl font-bold leading-tight animate-fade-in">
-              <span className="block text-white mb-2 sm:mb-3">Seu parceiro de</span>
-              <span className="block text-white mb-2">Outsourcing de TI</span>
-              <span className="block text-white">no Rio</span>
-            </h1>
+            <div className="flex flex-col lg:flex-row items-center lg:items-start gap-6">
+              <div className="flex-shrink-0 animate-fade-in">
+                <img 
+                  src={professionalPhoto} 
+                  alt="Especialista Megabitz" 
+                  className="w-32 h-32 sm:w-40 sm:h-40 lg:w-48 lg:h-48 object-contain"
+                />
+              </div>
+              
+              <div className="flex-1 space-y-4">
+                <h1 className="text-3xl sm:text-4xl md:text-5xl lg:text-5xl font-bold leading-tight animate-fade-in">
+                  <span className="block text-white mb-2">Seu parceiro de</span>
+                  <span className="block text-white mb-2">Outsourcing de TI</span>
+                  <span className="block text-white">no Rio</span>
+                </h1>
+              </div>
+            </div>
             
             <div className="animate-fade-in" style={{ animationDelay: '0.2s' }}>
               <p className="text-lg sm:text-xl text-white/90 leading-relaxed">
