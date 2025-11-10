@@ -1,6 +1,9 @@
 import { Facebook, Instagram, MessageCircle } from "lucide-react";
 import { Input } from "@/components/ui/input";
 import { Label } from "@/components/ui/label";
+import { Select, SelectContent, SelectItem, SelectTrigger, SelectValue } from "@/components/ui/select";
+import { Textarea } from "@/components/ui/textarea";
+import { Checkbox } from "@/components/ui/checkbox";
 import { useState } from "react";
 import { useToast } from "@/hooks/use-toast";
 import heroVideo from "@/assets/hero-video.mp4";
@@ -10,62 +13,151 @@ const Hero = () => {
   const [formData, setFormData] = useState({
     nome: "",
     empresa: "",
-    colaboradores: "",
-    computadores: "",
+    tamanhoEmpresa: "",
     telefone: "",
-    email: ""
+    email: "",
+    desafio: "",
+    aceitaPolitica: false
   });
+
+  const [errors, setErrors] = useState<Record<string, string>>({});
+  const [touched, setTouched] = useState<Record<string, boolean>>({});
+
+  const validateField = (name: string, value: string | boolean) => {
+    let error = "";
+    
+    switch (name) {
+      case "nome":
+        if (!value) error = "Nome é obrigatório";
+        else if (typeof value === "string" && value.length < 3) error = "Nome deve ter pelo menos 3 caracteres";
+        break;
+      case "email":
+        if (!value) error = "E-mail é obrigatório";
+        else if (typeof value === "string" && !/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(value)) error = "E-mail inválido";
+        break;
+      case "telefone":
+        if (!value) error = "Telefone é obrigatório";
+        else if (typeof value === "string" && value.replace(/\D/g, "").length < 10) error = "Telefone inválido";
+        break;
+      case "empresa":
+        if (!value) error = "Nome da empresa é obrigatório";
+        break;
+      case "tamanhoEmpresa":
+        if (!value) error = "Selecione o tamanho da empresa";
+        break;
+      case "desafio":
+        if (!value) error = "Descreva seu desafio";
+        else if (typeof value === "string" && value.length < 10) error = "Descreva melhor seu desafio (mín. 10 caracteres)";
+        break;
+      case "aceitaPolitica":
+        if (!value) error = "Você deve aceitar a política de privacidade";
+        break;
+    }
+    
+    return error;
+  };
+
+  const formatPhone = (value: string) => {
+    const numbers = value.replace(/\D/g, "");
+    if (numbers.length <= 10) {
+      return numbers.replace(/(\d{2})(\d{4})(\d{4})/, "($1) $2-$3");
+    }
+    return numbers.replace(/(\d{2})(\d{5})(\d{4})/, "($1) $2-$3");
+  };
+
+  const handleBlur = (name: string) => {
+    setTouched({ ...touched, [name]: true });
+    const error = validateField(name, formData[name as keyof typeof formData]);
+    setErrors({ ...errors, [name]: error });
+  };
+
+  const handleChange = (e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement>) => {
+    const { name, value } = e.target;
+    let newValue = value;
+    
+    if (name === "telefone") {
+      newValue = formatPhone(value);
+    }
+    
+    setFormData({ ...formData, [name]: newValue });
+    
+    if (touched[name]) {
+      const error = validateField(name, newValue);
+      setErrors({ ...errors, [name]: error });
+    }
+  };
+
+  const handleSelectChange = (value: string) => {
+    setFormData({ ...formData, tamanhoEmpresa: value });
+    if (touched.tamanhoEmpresa) {
+      const error = validateField("tamanhoEmpresa", value);
+      setErrors({ ...errors, tamanhoEmpresa: error });
+    }
+  };
+
+  const handleCheckboxChange = (checked: boolean) => {
+    setFormData({ ...formData, aceitaPolitica: checked });
+    if (touched.aceitaPolitica) {
+      const error = validateField("aceitaPolitica", checked);
+      setErrors({ ...errors, aceitaPolitica: error });
+    }
+  };
 
   const handleSubmit = (e: React.FormEvent) => {
     e.preventDefault();
     
-    // Basic validation
-    if (!formData.nome || !formData.email || !formData.telefone) {
+    // Validate all fields
+    const newErrors: Record<string, string> = {};
+    const newTouched: Record<string, boolean> = {};
+    
+    Object.keys(formData).forEach((key) => {
+      newTouched[key] = true;
+      const error = validateField(key, formData[key as keyof typeof formData]);
+      if (error) newErrors[key] = error;
+    });
+    
+    setTouched(newTouched);
+    setErrors(newErrors);
+    
+    if (Object.keys(newErrors).length > 0) {
       toast({
-        title: "Campos obrigatórios",
-        description: "Por favor, preencha nome, email e telefone.",
+        title: "Erro no formulário",
+        description: "Por favor, corrija os campos destacados.",
         variant: "destructive"
       });
       return;
     }
 
-    // Create WhatsApp message with form data
+    // Create WhatsApp message
     const message = `Olá! Meu nome é ${formData.nome}.
-${formData.empresa ? `Empresa: ${formData.empresa}` : ''}
-${formData.colaboradores ? `Número de colaboradores: ${formData.colaboradores}` : ''}
-${formData.computadores ? `Número de computadores: ${formData.computadores}` : ''}
+Empresa: ${formData.empresa}
+Tamanho da empresa: ${formData.tamanhoEmpresa}
 Telefone: ${formData.telefone}
 Email: ${formData.email}
+Desafio: ${formData.desafio}
 
-Gostaria de falar com um especialista sobre os serviços da Megabitz.`;
+Gostaria de falar com um consultor sobre os serviços da Megabitz.`;
 
     const whatsappUrl = `https://wa.me/552136497932?text=${encodeURIComponent(message)}`;
-    
-    // Open WhatsApp
     window.open(whatsappUrl, '_blank');
 
-    // Show success toast
     toast({
       title: "Redirecionando para WhatsApp!",
-      description: "Você será conectado com um especialista.",
+      description: "Você será conectado com um consultor.",
     });
 
     // Reset form
     setFormData({
       nome: "",
       empresa: "",
-      colaboradores: "",
-      computadores: "",
+      tamanhoEmpresa: "",
       telefone: "",
-      email: ""
+      email: "",
+      desafio: "",
+      aceitaPolitica: false
     });
-  };
-
-  const handleChange = (e: React.ChangeEvent<HTMLInputElement>) => {
-    setFormData({
-      ...formData,
-      [e.target.name]: e.target.value
-    });
+    setErrors({});
+    setTouched({});
   };
 
   return (
@@ -144,97 +236,137 @@ Gostaria de falar com um especialista sobre os serviços da Megabitz.`;
             <form onSubmit={handleSubmit} className="bg-gradient-to-br from-card via-card/90 to-card border border-primary/20 rounded-2xl p-6 sm:p-8 space-y-4 sm:space-y-6 card-glow">
               <div className="text-center mb-4">
                 <h3 className="text-xl sm:text-2xl font-bold text-white mb-2">
-                  Solicite uma Proposta
+                  Solicite uma conversa com Consultor
                 </h3>
                 <p className="text-sm text-white/70">
                   Preencha o formulário e fale com um especialista
                 </p>
               </div>
 
-              <div className="grid sm:grid-cols-2 gap-4">
-                <div className="space-y-2">
-                  <Label htmlFor="nome" className="text-white">Nome *</Label>
-                  <Input 
-                    id="nome" 
-                    name="nome"
-                    value={formData.nome}
-                    onChange={handleChange}
-                    placeholder="Seu nome completo"
-                    required
-                    className="bg-background/50 border-primary/20"
-                  />
-                </div>
-                
-                <div className="space-y-2">
-                  <Label htmlFor="empresa" className="text-white">Empresa</Label>
-                  <Input 
-                    id="empresa" 
-                    name="empresa"
-                    value={formData.empresa}
-                    onChange={handleChange}
-                    placeholder="Nome da empresa"
-                    className="bg-background/50 border-primary/20"
-                  />
-                </div>
+              <div className="space-y-2">
+                <Label htmlFor="nome" className="text-white">Nome *</Label>
+                <Input 
+                  id="nome" 
+                  name="nome"
+                  value={formData.nome}
+                  onChange={handleChange}
+                  onBlur={() => handleBlur("nome")}
+                  placeholder="Seu nome completo"
+                  required
+                  className={`bg-background/50 border-primary/20 ${errors.nome && touched.nome ? 'border-red-500' : ''}`}
+                />
+                {errors.nome && touched.nome && (
+                  <p className="text-red-500 text-xs mt-1">{errors.nome}</p>
+                )}
               </div>
 
-              <div className="grid sm:grid-cols-2 gap-4">
-                <div className="space-y-2">
-                  <Label htmlFor="colaboradores" className="text-white">Nº de colaboradores</Label>
-                  <Input 
-                    id="colaboradores" 
-                    name="colaboradores"
-                    value={formData.colaboradores}
-                    onChange={handleChange}
-                    type="number"
-                    placeholder="Ex: 50"
-                    className="bg-background/50 border-primary/20"
-                  />
-                </div>
-                
-                <div className="space-y-2">
-                  <Label htmlFor="computadores" className="text-white">Nº de computadores</Label>
-                  <Input 
-                    id="computadores" 
-                    name="computadores"
-                    value={formData.computadores}
-                    onChange={handleChange}
-                    type="number"
-                    placeholder="Ex: 40"
-                    className="bg-background/50 border-primary/20"
-                  />
-                </div>
+              <div className="space-y-2">
+                <Label htmlFor="email" className="text-white">E-mail *</Label>
+                <Input 
+                  id="email" 
+                  name="email"
+                  value={formData.email}
+                  onChange={handleChange}
+                  onBlur={() => handleBlur("email")}
+                  type="email"
+                  placeholder="seu@email.com"
+                  required
+                  className={`bg-background/50 border-primary/20 ${errors.email && touched.email ? 'border-red-500' : ''}`}
+                />
+                {errors.email && touched.email && (
+                  <p className="text-red-500 text-xs mt-1">{errors.email}</p>
+                )}
               </div>
 
-              <div className="grid sm:grid-cols-2 gap-4">
-                <div className="space-y-2">
-                  <Label htmlFor="telefone" className="text-white">Telefone/WhatsApp *</Label>
-                  <Input 
-                    id="telefone" 
-                    name="telefone"
-                    value={formData.telefone}
-                    onChange={handleChange}
-                    type="tel"
-                    placeholder="(11) 99999-9999"
-                    required
-                    className="bg-background/50 border-primary/20"
-                  />
-                </div>
-                
-                <div className="space-y-2">
-                  <Label htmlFor="email" className="text-white">E-mail *</Label>
-                  <Input 
-                    id="email" 
-                    name="email"
-                    value={formData.email}
-                    onChange={handleChange}
-                    type="email"
-                    placeholder="seu@email.com"
-                    required
-                    className="bg-background/50 border-primary/20"
-                  />
-                </div>
+              <div className="space-y-2">
+                <Label htmlFor="telefone" className="text-white">Telefone/WhatsApp *</Label>
+                <Input 
+                  id="telefone" 
+                  name="telefone"
+                  value={formData.telefone}
+                  onChange={handleChange}
+                  onBlur={() => handleBlur("telefone")}
+                  type="tel"
+                  placeholder="(11) 99999-9999"
+                  required
+                  maxLength={15}
+                  className={`bg-background/50 border-primary/20 ${errors.telefone && touched.telefone ? 'border-red-500' : ''}`}
+                />
+                {errors.telefone && touched.telefone && (
+                  <p className="text-red-500 text-xs mt-1">{errors.telefone}</p>
+                )}
               </div>
+
+              <div className="space-y-2">
+                <Label htmlFor="empresa" className="text-white">Nome da Empresa *</Label>
+                <Input 
+                  id="empresa" 
+                  name="empresa"
+                  value={formData.empresa}
+                  onChange={handleChange}
+                  onBlur={() => handleBlur("empresa")}
+                  placeholder="Nome da empresa"
+                  required
+                  className={`bg-background/50 border-primary/20 ${errors.empresa && touched.empresa ? 'border-red-500' : ''}`}
+                />
+                {errors.empresa && touched.empresa && (
+                  <p className="text-red-500 text-xs mt-1">{errors.empresa}</p>
+                )}
+              </div>
+
+              <div className="space-y-2">
+                <Label htmlFor="tamanhoEmpresa" className="text-white">Tamanho da Empresa *</Label>
+                <Select value={formData.tamanhoEmpresa} onValueChange={handleSelectChange}>
+                  <SelectTrigger 
+                    className={`bg-background/50 border-primary/20 text-white ${errors.tamanhoEmpresa && touched.tamanhoEmpresa ? 'border-red-500' : ''}`}
+                    onBlur={() => handleBlur("tamanhoEmpresa")}
+                  >
+                    <SelectValue placeholder="Selecione o tamanho" />
+                  </SelectTrigger>
+                  <SelectContent className="bg-card border-primary/20 z-50">
+                    <SelectItem value="5-11">5-11 funcionários</SelectItem>
+                    <SelectItem value="50-200">50-200 funcionários</SelectItem>
+                    <SelectItem value="300-500">300-500 funcionários</SelectItem>
+                    <SelectItem value="500+">Acima de 500 funcionários</SelectItem>
+                  </SelectContent>
+                </Select>
+                {errors.tamanhoEmpresa && touched.tamanhoEmpresa && (
+                  <p className="text-red-500 text-xs mt-1">{errors.tamanhoEmpresa}</p>
+                )}
+              </div>
+
+              <div className="space-y-2">
+                <Label htmlFor="desafio" className="text-white">Qual seu problema/desafio? *</Label>
+                <Textarea 
+                  id="desafio" 
+                  name="desafio"
+                  value={formData.desafio}
+                  onChange={handleChange}
+                  onBlur={() => handleBlur("desafio")}
+                  placeholder="Descreva seu desafio ou problema de TI..."
+                  required
+                  rows={4}
+                  className={`bg-background/50 border-primary/20 ${errors.desafio && touched.desafio ? 'border-red-500' : ''}`}
+                />
+                {errors.desafio && touched.desafio && (
+                  <p className="text-red-500 text-xs mt-1">{errors.desafio}</p>
+                )}
+              </div>
+
+              <div className="flex items-start space-x-2">
+                <Checkbox 
+                  id="aceitaPolitica"
+                  checked={formData.aceitaPolitica}
+                  onCheckedChange={handleCheckboxChange}
+                  className={`mt-1 ${errors.aceitaPolitica && touched.aceitaPolitica ? 'border-red-500' : ''}`}
+                />
+                <Label htmlFor="aceitaPolitica" className="text-xs text-white/80 leading-tight cursor-pointer">
+                  Aceito a <a href="/privacidade" className="text-primary hover:underline" target="_blank">política de privacidade</a> e autorizo o contato da Megabitz Tecnologia
+                </Label>
+              </div>
+              {errors.aceitaPolitica && touched.aceitaPolitica && (
+                <p className="text-red-500 text-xs mt-1">{errors.aceitaPolitica}</p>
+              )}
 
               <button 
                 type="submit"
