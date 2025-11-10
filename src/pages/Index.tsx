@@ -15,13 +15,13 @@ const Index = () => {
     <div className="min-h-screen">
       <Navigation />
       <Hero />
+      <AboutMegabitz />
       <TechSpecs />
+      <Differentials />
       <WhatsIncluded />
       <HowItWorks />
-      <Differentials />
       <FAQ />
       <Testimonials />
-      <AboutMegabitz />
       <ContactForm />
       <Footer />
     </div>
