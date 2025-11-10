@@ -187,7 +187,7 @@ const Hero = () => {
           {/* Left Column - Content */}
           <div className="space-y-2 sm:space-y-3 lg:space-y-6 text-center lg:text-left">
             {/* Mobile - Foto acima do título */}
-            <div className="lg:hidden flex justify-center animate-fade-in relative mb-1">
+            <div className="lg:hidden flex justify-center animate-fade-in relative -mb-2">
               <img 
                 src={professionalPhoto} 
                 alt="Especialista Megabitz" 
