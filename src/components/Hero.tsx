@@ -413,17 +413,6 @@ Gostaria de falar com um consultor sobre os serviços da Megabitz.`;
           </div>
         </div>
       </div>
-      
-      {/* WhatsApp Button */}
-      <a 
-        href="https://wa.me/552136497932" 
-        target="_blank" 
-        rel="noopener noreferrer"
-        className="fixed bottom-4 left-4 sm:bottom-6 sm:left-6 z-50 w-12 h-12 sm:w-14 sm:h-14 bg-[#25D366] rounded-full flex items-center justify-center shadow-lg hover:scale-110 transition-transform animate-pulse"
-        aria-label="Contato WhatsApp"
-      >
-        <MessageCircle className="w-6 h-6 sm:w-7 sm:h-7 text-white" />
-      </a>
     </section>
   );
 };
