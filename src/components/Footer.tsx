@@ -1,4 +1,4 @@
-import { Instagram, Facebook } from "lucide-react";
+import { Instagram, Facebook, Phone } from "lucide-react";
 import megabitzLogo from "@/assets/megabitz-logo-white.png";
 import googleStars from "@/assets/google-5-stars.png";
 
@@ -26,13 +26,29 @@ const Footer = () => {
       { label: "Sobre Nós", href: "#sobre" },
       { label: "Recursos", href: "#recursos" },
       { label: "Diferenciais", href: "#diferenciais" },
-      { label: "Contato", href: "#contato" }
+      { label: "FAQ", href: "#faq" }
     ]
   };
 
   return (
-    <footer className="border-t border-border bg-card/30">
-      <div className="container mx-auto px-4 py-12">
+    <footer className="relative border-t border-border bg-card/30">
+      {/* Google Badge - Positioned above footer */}
+      <div className="absolute -top-12 left-1/2 -translate-x-1/2 md:left-auto md:right-12 md:translate-x-0 z-10">
+        <a 
+          href="https://www.google.com/search?q=megabitz+tecnologia&sourceid=chrome&ie=UTF-8#lrd=0x997e75742ac2a9:0x7eadf9bd117d7cb,1,,,," 
+          target="_blank" 
+          rel="noopener noreferrer"
+          className="block hover:scale-105 transition-transform duration-300"
+        >
+          <img 
+            src={googleStars} 
+            alt="Google 5 Estrelas" 
+            className="h-24 w-auto drop-shadow-2xl"
+          />
+        </a>
+      </div>
+
+      <div className="container mx-auto px-4 py-12 pt-16">
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8 mb-12 text-center md:text-left">
           {/* Brand */}
           <div className="space-y-4 flex flex-col items-center md:items-start">
@@ -48,7 +64,6 @@ const Footer = () => {
               <p className="font-medium">CNPJ: 10.610.465/0001-18</p>
               <p>Rua Barão de São Francisco, 373</p>
               <p>Sala 312 – Vila Isabel, Rio de Janeiro</p>
-              <p className="text-primary">comercial@megabitz.com.br</p>
             </div>
             <div className="flex gap-4 pt-2">
               <a 
@@ -68,14 +83,6 @@ const Footer = () => {
                 aria-label="Facebook"
               >
                 <Facebook className="h-5 w-5" />
-              </a>
-              <a 
-                href="https://www.google.com/search?q=megabitz+tecnologia&sourceid=chrome&ie=UTF-8#lrd=0x997e75742ac2a9:0x7eadf9bd117d7cb,1,,,," 
-                target="_blank" 
-                rel="noopener noreferrer"
-                className="text-sm text-muted-foreground hover:text-primary transition-colors flex items-center"
-              >
-                Avaliações
               </a>
             </div>
           </div>
@@ -113,21 +120,24 @@ const Footer = () => {
             </ul>
           </div>
 
-          {/* Google Badge */}
+          {/* Contato */}
           <div className="flex flex-col items-center md:items-start">
-            <h4 className="font-semibold mb-4">Avaliações</h4>
-            <a 
-              href="https://www.google.com/search?q=megabitz+tecnologia&sourceid=chrome&ie=UTF-8#lrd=0x997e75742ac2a9:0x7eadf9bd117d7cb,1,,,," 
-              target="_blank" 
-              rel="noopener noreferrer"
-              className="hover:opacity-80 transition-opacity"
-            >
-              <img 
-                src={googleStars} 
-                alt="Google 5 Estrelas" 
-                className="h-20 w-auto"
-              />
-            </a>
+            <h4 className="font-semibold mb-4">Contato</h4>
+            <div className="space-y-3 text-sm">
+              <a 
+                href="mailto:comercial@megabitz.com.br"
+                className="text-muted-foreground hover:text-primary transition-colors flex items-center gap-2"
+              >
+                <span>comercial@megabitz.com.br</span>
+              </a>
+              <a 
+                href="tel:+552136497932"
+                className="text-muted-foreground hover:text-primary transition-colors flex items-center gap-2"
+              >
+                <Phone className="h-4 w-4" />
+                <span>(21) 3649-7932</span>
+              </a>
+            </div>
           </div>
         </div>
 
