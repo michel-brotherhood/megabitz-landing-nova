@@ -170,10 +170,10 @@ const Testimonials = () => {
           </div>
 
           {/* Carousel Navigation */}
-          <div className="flex items-center justify-center gap-4 mb-12 animate-fade-in" style={{ animationDelay: '0.4s' }}>
+          <div className="hidden md:flex items-center justify-center gap-4 mb-12 animate-fade-in" style={{ animationDelay: '0.4s' }}>
             <button
               onClick={handlePrev}
-              className="hidden md:flex w-10 h-10 rounded-lg border-2 border-[#6be4e4]/30 text-[#6be4e4] hover:bg-[#6be4e4]/10 transition-all duration-300 items-center justify-center"
+              className="w-10 h-10 rounded-lg border-2 border-[#6be4e4]/30 text-[#6be4e4] hover:bg-[#6be4e4]/10 transition-all duration-300 flex items-center justify-center"
               aria-label="Anterior"
             >
               <ChevronLeft className="w-5 h-5" />
@@ -196,7 +196,7 @@ const Testimonials = () => {
 
             <button
               onClick={handleNext}
-              className="hidden md:flex w-10 h-10 rounded-lg border-2 border-[#6be4e4]/30 text-[#6be4e4] hover:bg-[#6be4e4]/10 transition-all duration-300 items-center justify-center"
+              className="w-10 h-10 rounded-lg border-2 border-[#6be4e4]/30 text-[#6be4e4] hover:bg-[#6be4e4]/10 transition-all duration-300 flex items-center justify-center"
               aria-label="Próximo"
             >
               <ChevronRight className="w-5 h-5" />
