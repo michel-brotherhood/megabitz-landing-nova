@@ -38,31 +38,31 @@ const FAQ = () => {
   ];
 
   return (
-    <section className="py-24 px-4 bg-gradient-to-b from-muted/10 to-background">
+    <section className="py-16 md:py-24 px-4 bg-gradient-to-b from-muted/10 to-background">
       <div className="container mx-auto">
         <div className="max-w-3xl mx-auto">
-          <div className="text-center mb-16">
-            <h2 className="text-4xl md:text-5xl font-bold mb-6">
+          <div className="text-center mb-12 md:mb-16">
+            <h2 className="text-3xl sm:text-4xl md:text-5xl font-bold mb-4 md:mb-6">
               <span className="glow-text">Perguntas</span>
               <br />
               <span className="gradient-text">Frequentes</span>
             </h2>
-            <p className="text-lg text-foreground/80">
+            <p className="text-base md:text-lg text-foreground/80">
               Respostas rápidas e diretas para suas dúvidas
             </p>
           </div>
 
-          <Accordion type="single" collapsible className="space-y-4">
+          <Accordion type="single" collapsible className="space-y-3 md:space-y-4">
             {faqs.map((faq, index) => (
               <AccordionItem 
                 key={index} 
                 value={`item-${index}`}
-                className="bg-card/50 border border-primary/20 rounded-lg px-6 hover:border-primary/40 transition-colors"
+                className="bg-card/50 border border-primary/20 rounded-lg px-4 md:px-6 hover:border-primary/40 transition-colors"
               >
-                <AccordionTrigger className="text-left hover:text-primary">
+                <AccordionTrigger className="text-left hover:text-primary text-sm md:text-base py-4">
                   {faq.question}
                 </AccordionTrigger>
-                <AccordionContent className="text-foreground/80">
+                <AccordionContent className="text-foreground/80 text-sm md:text-base">
                   {faq.answer}
                 </AccordionContent>
               </AccordionItem>

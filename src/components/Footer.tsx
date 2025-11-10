@@ -32,24 +32,24 @@ const Footer = () => {
 
   return (
     <footer className="border-t border-border bg-card/30">
-      <div className="container mx-auto px-4 py-12">
-        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8 mb-12 text-center md:text-left">
+      <div className="container mx-auto px-4 py-8 md:py-12">
+        <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6 md:gap-8 mb-8 md:mb-12 text-center md:text-left">
           {/* Brand */}
-          <div className="space-y-4 flex flex-col items-center md:items-start">
+          <div className="space-y-3 md:space-y-4 flex flex-col items-center md:items-start">
             <img 
               src={megabitzLogo} 
               alt="Megabitz Tecnologia" 
-              className="h-12 w-auto md:-ml-4"
+              className="h-10 md:h-12 w-auto md:-ml-4"
             />
-            <p className="text-sm text-muted-foreground">
+            <p className="text-xs md:text-sm text-muted-foreground">
               TI sem drama. Segurança de verdade para sua empresa.
             </p>
-            <div className="space-y-1 text-sm text-muted-foreground w-full">
+            <div className="space-y-1 text-xs md:text-sm text-muted-foreground w-full">
               <p className="font-medium">CNPJ: 10.610.465/0001-18</p>
               <p>Rua Barão de São Francisco, 373</p>
               <p>Sala 312 – Vila Isabel, Rio de Janeiro</p>
             </div>
-            <div className="flex gap-4 pt-2">
+            <div className="flex gap-3 md:gap-4 pt-2">
               <a 
                 href="https://www.instagram.com/megabitztecnologia/" 
                 target="_blank" 
@@ -73,7 +73,7 @@ const Footer = () => {
 
           {/* Serviços */}
           <div className="flex flex-col items-center md:items-start">
-            <h4 className="font-semibold mb-4">Serviços</h4>
+            <h4 className="font-semibold mb-3 md:mb-4 text-sm md:text-base">Serviços</h4>
             <ul className="space-y-2">
               {footerLinks.servicos.map((link, index) => (
                 <li key={index}>
@@ -81,7 +81,7 @@ const Footer = () => {
                     href={link.href} 
                     target="_blank"
                     rel="noopener noreferrer"
-                    className="text-sm text-muted-foreground hover:text-primary transition-colors"
+                    className="text-xs md:text-sm text-muted-foreground hover:text-primary transition-colors"
                   >
                     {link.label}
                   </a>
@@ -92,11 +92,11 @@ const Footer = () => {
 
           {/* Empresa */}
           <div className="flex flex-col items-center md:items-start">
-            <h4 className="font-semibold mb-4">Empresa</h4>
+            <h4 className="font-semibold mb-3 md:mb-4 text-sm md:text-base">Empresa</h4>
             <ul className="space-y-2">
               {footerLinks.empresa.map((link, index) => (
                 <li key={index}>
-                  <a href={link.href} className="text-sm text-muted-foreground hover:text-primary transition-colors">
+                  <a href={link.href} className="text-xs md:text-sm text-muted-foreground hover:text-primary transition-colors">
                     {link.label}
                   </a>
                 </li>
@@ -106,11 +106,11 @@ const Footer = () => {
 
           {/* Contato */}
           <div className="flex flex-col items-center md:items-start">
-            <h4 className="font-semibold mb-4">Contato</h4>
-            <div className="space-y-3 text-sm">
+            <h4 className="font-semibold mb-3 md:mb-4 text-sm md:text-base">Contato</h4>
+            <div className="space-y-2 md:space-y-3 text-xs md:text-sm">
               <a 
                 href="mailto:comercial@megabitz.com.br"
-                className="text-muted-foreground hover:text-primary transition-colors flex items-center gap-2 justify-center md:justify-start"
+                className="text-muted-foreground hover:text-primary transition-colors flex items-center gap-2 justify-center md:justify-start break-all"
               >
                 <span>comercial@megabitz.com.br</span>
               </a>
@@ -118,11 +118,11 @@ const Footer = () => {
                 href="tel:+552136497932"
                 className="text-muted-foreground hover:text-primary transition-colors flex items-center gap-2 justify-center md:justify-start"
               >
-                <Phone className="h-4 w-4" />
+                <Phone className="h-4 w-4 flex-shrink-0" />
                 <span>(21) 3649-7932</span>
               </a>
             </div>
-            <div className="mt-6">
+            <div className="mt-4 md:mt-6">
               <a 
                 href="https://www.google.com/search?q=megabitz+tecnologia&sourceid=chrome&ie=UTF-8#lrd=0x997e75742ac2a9:0x7eadf9bd117d7cb,1,,,," 
                 target="_blank" 
@@ -132,26 +132,26 @@ const Footer = () => {
                 <img 
                   src={googleStars} 
                   alt="Google 5 Estrelas - 86 avaliações" 
-                  className="h-20 w-auto"
+                  className="h-16 md:h-20 w-auto"
                 />
               </a>
             </div>
           </div>
         </div>
 
-        <div className="pt-8 border-t border-border">
-          <div className="flex flex-col md:flex-row justify-between items-center gap-4 text-center md:text-left">
-            <p className="text-sm text-muted-foreground">
+        <div className="pt-6 md:pt-8 border-t border-border">
+          <div className="flex flex-col md:flex-row justify-between items-center gap-3 md:gap-4 text-center md:text-left">
+            <p className="text-xs md:text-sm text-muted-foreground">
               © 2024 Megabitz Tecnologia. Todos os direitos reservados.
             </p>
-            <div className="flex gap-6">
-              <a href="/privacidade" className="text-sm text-muted-foreground hover:text-primary transition-colors">
+            <div className="flex gap-4 md:gap-6">
+              <a href="/privacidade" className="text-xs md:text-sm text-muted-foreground hover:text-primary transition-colors">
                 Privacidade
               </a>
-              <a href="/termos" className="text-sm text-muted-foreground hover:text-primary transition-colors">
+              <a href="/termos" className="text-xs md:text-sm text-muted-foreground hover:text-primary transition-colors">
                 Termos
               </a>
-              <a href="/cookies" className="text-sm text-muted-foreground hover:text-primary transition-colors">
+              <a href="/cookies" className="text-xs md:text-sm text-muted-foreground hover:text-primary transition-colors">
                 Cookies
               </a>
             </div>

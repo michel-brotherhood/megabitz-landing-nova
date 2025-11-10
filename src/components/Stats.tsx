@@ -81,7 +81,7 @@ const Stats = () => {
     }, [isVisible, end, duration]);
 
     return (
-      <span className="text-5xl md:text-6xl font-bold text-[#6be4e4]">
+      <span className="text-4xl sm:text-5xl md:text-6xl font-bold text-[#6be4e4]">
         {count}
         {suffix}
       </span>
@@ -92,7 +92,7 @@ const Stats = () => {
     <section ref={sectionRef} className="py-24 px-4 relative overflow-hidden bg-gradient-to-br from-[#0a1f3d] via-[#0d2847] to-[#0a1f3d]">
       <div className="container mx-auto relative z-10">
         <div className="max-w-6xl mx-auto">
-          <div className="grid md:grid-cols-4 gap-8">
+          <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-8 md:gap-12">
             {stats.map((stat, index) => {
               const IconComponent = stat.icon;
               return (
@@ -101,18 +101,18 @@ const Stats = () => {
                   className="text-center animate-fade-in-up"
                   style={{ animationDelay: `${index * 0.1}s` }}
                 >
-                  <div className="mb-6 flex justify-center">
-                    <div className="w-16 h-16 rounded-2xl bg-[#6be4e4]/20 border-2 border-[#6be4e4] flex items-center justify-center">
-                      <IconComponent className="w-8 h-8 text-[#6be4e4]" />
+                  <div className="mb-4 md:mb-6 flex justify-center">
+                    <div className="w-14 h-14 md:w-16 md:h-16 rounded-2xl bg-[#6be4e4]/20 border-2 border-[#6be4e4] flex items-center justify-center">
+                      <IconComponent className="w-7 h-7 md:w-8 md:h-8 text-[#6be4e4]" />
                     </div>
                   </div>
                   <div className="mb-2">
                     <CountUpAnimation end={stat.value} suffix={stat.suffix} />
                   </div>
-                  <h3 className="text-xl font-bold text-white mb-2">
+                  <h3 className="text-lg md:text-xl font-bold text-white mb-1 md:mb-2">
                     {stat.label}
                   </h3>
-                  <p className="text-white/70">
+                  <p className="text-sm md:text-base text-white/70">
                     {stat.description}
                   </p>
                 </div>
