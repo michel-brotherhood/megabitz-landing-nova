@@ -185,7 +185,7 @@ const Hero = () => {
       <div className="container relative z-10 mx-auto px-4 sm:px-6 py-20 sm:py-8">
         <div className="grid lg:grid-cols-2 gap-8 lg:gap-12 items-center min-h-[calc(100vh-8rem)]">
           {/* Left Column - Content */}
-          <div className="space-y-6 sm:space-y-8 lg:space-y-0 text-center lg:text-left">
+          <div className="space-y-6 sm:space-y-8 lg:space-y-6 text-center lg:text-left">
             {/* Mobile - Foto acima do título */}
             <div className="lg:hidden flex justify-center animate-fade-in relative">
               <img 
@@ -197,7 +197,7 @@ const Hero = () => {
             </div>
 
             {/* Título */}
-            <h1 className="text-3xl sm:text-4xl md:text-5xl lg:text-5xl font-bold leading-tight animate-fade-in lg:mb-6">
+            <h1 className="text-3xl sm:text-4xl md:text-5xl lg:text-5xl font-bold leading-tight animate-fade-in">
               <span className="block text-white mb-1">Seu parceiro de</span>
               <span className="block text-white mb-1">Outsourcing de TI</span>
               <span className="block text-white">no Rio</span>
@@ -205,7 +205,7 @@ const Hero = () => {
             
             {/* Desktop - Foto junto ao texto descritivo e botão */}
             <div className="animate-fade-in" style={{ animationDelay: '0.2s' }}>
-              <div className="lg:flex lg:flex-col lg:gap-1">
+              <div className="lg:flex lg:flex-col lg:gap-1 lg:items-start">
                 <div className="lg:flex lg:items-center lg:gap-4">
                   <div className="hidden lg:block relative flex-shrink-0">
                     <img 
