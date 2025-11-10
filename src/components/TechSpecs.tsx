@@ -1,18 +1,6 @@
 import { Shield, Settings, TrendingUp, CheckCircle2 } from "lucide-react";
-import { useEffect, useState } from "react";
 
 const TechSpecs = () => {
-  const [scrollY, setScrollY] = useState(0);
-
-  useEffect(() => {
-    const handleScroll = () => {
-      setScrollY(window.scrollY);
-    };
-
-    window.addEventListener('scroll', handleScroll);
-    return () => window.removeEventListener('scroll', handleScroll);
-  }, []);
-
   const benefits = [
     {
       title: "Segurança de Dados",
@@ -38,15 +26,9 @@ const TechSpecs = () => {
 
   return (
     <section id="beneficios" className="py-24 px-4 relative overflow-hidden">
-      {/* Background gradient with parallax effect */}
-      <div 
-        className="absolute inset-0 bg-gradient-to-br from-[#1a3d3d] via-[#0d2626] to-[#042020]"
-        style={{ transform: `translateY(${scrollY * 0.3}px)` }}
-      />
-      <div 
-        className="absolute inset-0 bg-gradient-to-tr from-[#6be4e4]/10 via-transparent to-[#6be4e4]/5"
-        style={{ transform: `translateY(${scrollY * 0.2}px)` }}
-      />
+      {/* Background gradient */}
+      <div className="absolute inset-0 bg-gradient-to-br from-[#1a3d3d] via-[#0d2626] to-[#042020]" />
+      <div className="absolute inset-0 bg-gradient-to-tr from-[#6be4e4]/10 via-transparent to-[#6be4e4]/5" />
       
       <div className="container mx-auto relative z-10">
         <div className="max-w-6xl mx-auto">
