@@ -1,11 +1,23 @@
 import Navigation from "@/components/Navigation";
 import Footer from "@/components/Footer";
+import { ArrowLeft } from "lucide-react";
+import { useNavigate } from "react-router-dom";
 
 const Privacy = () => {
+  const navigate = useNavigate();
+
   return (
     <div className="min-h-screen">
       <Navigation />
       <main className="container mx-auto px-4 py-24 max-w-4xl">
+        <button
+          onClick={() => navigate("/")}
+          className="flex items-center gap-2 text-primary hover:text-primary/80 transition-colors mb-8 group"
+        >
+          <ArrowLeft className="w-5 h-5 group-hover:-translate-x-1 transition-transform" />
+          <span>Voltar para o site</span>
+        </button>
+        
         <h1 className="text-4xl font-bold mb-8">Política de Privacidade</h1>
         
         <div className="prose prose-lg max-w-none space-y-6">
