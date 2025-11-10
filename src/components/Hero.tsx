@@ -187,7 +187,7 @@ Gostaria de falar com um consultor sobre os serviços da Megabitz.`;
             
             <div className="animate-fade-in" style={{ animationDelay: '0.2s' }}>
               <p className="text-lg sm:text-xl text-white/90 leading-relaxed">
-                Times dedicados que aceleram seus projetos e apagam incêndios.
+                Times dedicados com Especialistas que resolvem seus desafios de TI, que aceleram seus projetos e apagam incêndios.
               </p>
             </div>
             
@@ -260,79 +260,83 @@ Gostaria de falar com um consultor sobre os serviços da Megabitz.`;
                 )}
               </div>
 
-              <div className="space-y-2">
-                <Label htmlFor="email" className="text-white">E-mail *</Label>
-                <Input 
-                  id="email" 
-                  name="email"
-                  value={formData.email}
-                  onChange={handleChange}
-                  onBlur={() => handleBlur("email")}
-                  type="email"
-                  placeholder="seu@email.com"
-                  required
-                  className={`bg-background/50 border-primary/20 ${errors.email && touched.email ? 'border-red-500' : ''}`}
-                />
-                {errors.email && touched.email && (
-                  <p className="text-red-500 text-xs mt-1">{errors.email}</p>
-                )}
+              <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
+                <div className="space-y-2">
+                  <Label htmlFor="telefone" className="text-white">Telefone/WhatsApp *</Label>
+                  <Input 
+                    id="telefone" 
+                    name="telefone"
+                    value={formData.telefone}
+                    onChange={handleChange}
+                    onBlur={() => handleBlur("telefone")}
+                    type="tel"
+                    placeholder="(11) 99999-9999"
+                    required
+                    maxLength={15}
+                    className={`bg-background/50 border-primary/20 ${errors.telefone && touched.telefone ? 'border-red-500' : ''}`}
+                  />
+                  {errors.telefone && touched.telefone && (
+                    <p className="text-red-500 text-xs mt-1">{errors.telefone}</p>
+                  )}
+                </div>
+
+                <div className="space-y-2">
+                  <Label htmlFor="email" className="text-white">E-mail *</Label>
+                  <Input 
+                    id="email" 
+                    name="email"
+                    value={formData.email}
+                    onChange={handleChange}
+                    onBlur={() => handleBlur("email")}
+                    type="email"
+                    placeholder="seu@email.com"
+                    required
+                    className={`bg-background/50 border-primary/20 ${errors.email && touched.email ? 'border-red-500' : ''}`}
+                  />
+                  {errors.email && touched.email && (
+                    <p className="text-red-500 text-xs mt-1">{errors.email}</p>
+                  )}
+                </div>
               </div>
 
-              <div className="space-y-2">
-                <Label htmlFor="telefone" className="text-white">Telefone/WhatsApp *</Label>
-                <Input 
-                  id="telefone" 
-                  name="telefone"
-                  value={formData.telefone}
-                  onChange={handleChange}
-                  onBlur={() => handleBlur("telefone")}
-                  type="tel"
-                  placeholder="(11) 99999-9999"
-                  required
-                  maxLength={15}
-                  className={`bg-background/50 border-primary/20 ${errors.telefone && touched.telefone ? 'border-red-500' : ''}`}
-                />
-                {errors.telefone && touched.telefone && (
-                  <p className="text-red-500 text-xs mt-1">{errors.telefone}</p>
-                )}
-              </div>
+              <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
+                <div className="space-y-2">
+                  <Label htmlFor="empresa" className="text-white">Nome da Empresa *</Label>
+                  <Input 
+                    id="empresa" 
+                    name="empresa"
+                    value={formData.empresa}
+                    onChange={handleChange}
+                    onBlur={() => handleBlur("empresa")}
+                    placeholder="Nome da empresa"
+                    required
+                    className={`bg-background/50 border-primary/20 ${errors.empresa && touched.empresa ? 'border-red-500' : ''}`}
+                  />
+                  {errors.empresa && touched.empresa && (
+                    <p className="text-red-500 text-xs mt-1">{errors.empresa}</p>
+                  )}
+                </div>
 
-              <div className="space-y-2">
-                <Label htmlFor="empresa" className="text-white">Nome da Empresa *</Label>
-                <Input 
-                  id="empresa" 
-                  name="empresa"
-                  value={formData.empresa}
-                  onChange={handleChange}
-                  onBlur={() => handleBlur("empresa")}
-                  placeholder="Nome da empresa"
-                  required
-                  className={`bg-background/50 border-primary/20 ${errors.empresa && touched.empresa ? 'border-red-500' : ''}`}
-                />
-                {errors.empresa && touched.empresa && (
-                  <p className="text-red-500 text-xs mt-1">{errors.empresa}</p>
-                )}
-              </div>
-
-              <div className="space-y-2">
-                <Label htmlFor="tamanhoEmpresa" className="text-white">Tamanho da Empresa *</Label>
-                <Select value={formData.tamanhoEmpresa} onValueChange={handleSelectChange}>
-                  <SelectTrigger 
-                    className={`bg-background/50 border-primary/20 text-white ${errors.tamanhoEmpresa && touched.tamanhoEmpresa ? 'border-red-500' : ''}`}
-                    onBlur={() => handleBlur("tamanhoEmpresa")}
-                  >
-                    <SelectValue placeholder="Selecione o tamanho" />
-                  </SelectTrigger>
-                  <SelectContent className="bg-card border-primary/20 z-50">
-                    <SelectItem value="5-11">5-11 funcionários</SelectItem>
-                    <SelectItem value="50-200">50-200 funcionários</SelectItem>
-                    <SelectItem value="300-500">300-500 funcionários</SelectItem>
-                    <SelectItem value="500+">Acima de 500 funcionários</SelectItem>
-                  </SelectContent>
-                </Select>
-                {errors.tamanhoEmpresa && touched.tamanhoEmpresa && (
-                  <p className="text-red-500 text-xs mt-1">{errors.tamanhoEmpresa}</p>
-                )}
+                <div className="space-y-2">
+                  <Label htmlFor="tamanhoEmpresa" className="text-white">Tamanho da Empresa *</Label>
+                  <Select value={formData.tamanhoEmpresa} onValueChange={handleSelectChange}>
+                    <SelectTrigger 
+                      className={`bg-background/50 border-primary/20 text-white ${errors.tamanhoEmpresa && touched.tamanhoEmpresa ? 'border-red-500' : ''}`}
+                      onBlur={() => handleBlur("tamanhoEmpresa")}
+                    >
+                      <SelectValue placeholder="Selecione o tamanho" />
+                    </SelectTrigger>
+                    <SelectContent className="bg-card border-primary/20 z-50">
+                      <SelectItem value="5-11">5-11 funcionários</SelectItem>
+                      <SelectItem value="50-200">50-200 funcionários</SelectItem>
+                      <SelectItem value="300-500">300-500 funcionários</SelectItem>
+                      <SelectItem value="500+">Acima de 500 funcionários</SelectItem>
+                    </SelectContent>
+                  </Select>
+                  {errors.tamanhoEmpresa && touched.tamanhoEmpresa && (
+                    <p className="text-red-500 text-xs mt-1">{errors.tamanhoEmpresa}</p>
+                  )}
+                </div>
               </div>
 
               <div className="space-y-2">
@@ -353,20 +357,22 @@ Gostaria de falar com um consultor sobre os serviços da Megabitz.`;
                 )}
               </div>
 
-              <div className="flex items-start space-x-2">
+              <div className="flex items-start gap-2">
                 <Checkbox 
                   id="aceitaPolitica"
                   checked={formData.aceitaPolitica}
                   onCheckedChange={handleCheckboxChange}
-                  className={`mt-1 ${errors.aceitaPolitica && touched.aceitaPolitica ? 'border-red-500' : ''}`}
+                  className={`mt-0.5 ${errors.aceitaPolitica && touched.aceitaPolitica ? 'border-red-500' : ''}`}
                 />
-                <Label htmlFor="aceitaPolitica" className="text-xs text-white/80 leading-tight cursor-pointer">
-                  Aceito a <a href="/privacidade" className="text-primary hover:underline" target="_blank">política de privacidade</a> e autorizo o contato da Megabitz Tecnologia
-                </Label>
+                <div className="flex-1">
+                  <Label htmlFor="aceitaPolitica" className="text-xs text-white/80 leading-tight cursor-pointer">
+                    Aceito a <a href="/privacidade" className="text-primary hover:underline" target="_blank">política de privacidade</a> e autorizo o contato da Megabitz Tecnologia
+                  </Label>
+                  {errors.aceitaPolitica && touched.aceitaPolitica && (
+                    <p className="text-red-500 text-xs mt-1">{errors.aceitaPolitica}</p>
+                  )}
+                </div>
               </div>
-              {errors.aceitaPolitica && touched.aceitaPolitica && (
-                <p className="text-red-500 text-xs mt-1">{errors.aceitaPolitica}</p>
-              )}
 
               <button 
                 type="submit"
