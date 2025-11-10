@@ -186,7 +186,7 @@ const Hero = () => {
         <div className="grid lg:grid-cols-2 gap-8 lg:gap-12 items-center min-h-[calc(100vh-8rem)]">
           {/* Left Column - Content */}
           <div className="space-y-6 sm:space-y-8 text-center lg:text-left">
-            <div className="flex flex-col lg:flex-row items-center lg:items-start gap-3 lg:gap-6">
+            <div className="flex flex-col lg:flex-row items-center lg:items-start gap-1 sm:gap-2 lg:gap-6">
               <div className="flex-shrink-0 animate-fade-in order-first">
                 <img 
                   src={professionalPhoto} 
