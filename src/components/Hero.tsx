@@ -1,8 +1,73 @@
-import { Button } from "@/components/ui/button";
 import { Facebook, Instagram, MessageCircle } from "lucide-react";
+import { Input } from "@/components/ui/input";
+import { Label } from "@/components/ui/label";
+import { useState } from "react";
+import { useToast } from "@/hooks/use-toast";
 import heroVideo from "@/assets/hero-video.mp4";
 
 const Hero = () => {
+  const { toast } = useToast();
+  const [formData, setFormData] = useState({
+    nome: "",
+    empresa: "",
+    colaboradores: "",
+    computadores: "",
+    telefone: "",
+    email: ""
+  });
+
+  const handleSubmit = (e: React.FormEvent) => {
+    e.preventDefault();
+    
+    // Basic validation
+    if (!formData.nome || !formData.email || !formData.telefone) {
+      toast({
+        title: "Campos obrigatórios",
+        description: "Por favor, preencha nome, email e telefone.",
+        variant: "destructive"
+      });
+      return;
+    }
+
+    // Create WhatsApp message with form data
+    const message = `Olá! Meu nome é ${formData.nome}.
+${formData.empresa ? `Empresa: ${formData.empresa}` : ''}
+${formData.colaboradores ? `Número de colaboradores: ${formData.colaboradores}` : ''}
+${formData.computadores ? `Número de computadores: ${formData.computadores}` : ''}
+Telefone: ${formData.telefone}
+Email: ${formData.email}
+
+Gostaria de falar com um especialista sobre os serviços da Megabitz.`;
+
+    const whatsappUrl = `https://wa.me/552136497932?text=${encodeURIComponent(message)}`;
+    
+    // Open WhatsApp
+    window.open(whatsappUrl, '_blank');
+
+    // Show success toast
+    toast({
+      title: "Redirecionando para WhatsApp!",
+      description: "Você será conectado com um especialista.",
+    });
+
+    // Reset form
+    setFormData({
+      nome: "",
+      empresa: "",
+      colaboradores: "",
+      computadores: "",
+      telefone: "",
+      email: ""
+    });
+  };
+
+  const handleChange = (e: React.ChangeEvent<HTMLInputElement>) => {
+    setFormData({
+      ...formData,
+      [e.target.name]: e.target.value
+    });
+  };
+
   return (
     <section className="relative min-h-screen flex items-center justify-center overflow-hidden pt-16">
       {/* Background Video */}
@@ -19,58 +84,193 @@ const Hero = () => {
       {/* Overlay */}
       <div className="absolute inset-0 bg-black/85" />
       
-      <div className="container relative z-10 mx-auto px-4 sm:px-6 flex flex-col items-center justify-center min-h-[calc(100vh-4rem)] text-center pb-20 sm:pb-8">
-        {/* Main Content */}
-        <div className="max-w-4xl space-y-6 sm:space-y-8">
-          <h1 className="text-2xl sm:text-4xl md:text-5xl lg:text-6xl font-bold leading-relaxed sm:leading-tight animate-fade-in">
-            <span className="block text-white mb-3 sm:mb-4">Outsourcing de TI com Alocação de</span>
-            <span className="block text-white">Profissionais Especialistas para sua empresa.</span>
-          </h1>
-          
-          <div className="w-full max-w-3xl mx-auto animate-fade-in" style={{ animationDelay: '0.2s' }}>
-            <div className="h-px bg-white/50 mb-6 sm:mb-8" />
-            <p className="text-base sm:text-lg text-white/90 leading-relaxed px-2 sm:px-4">
-              Contamos com profissionais experientes e prontos para atuar imediatamente, proporcionando o suporte necessário para que sua empresa alcance melhores resultados de forma ágil e eficiente.
-            </p>
-          </div>
-          
-          <div className="pt-4 sm:pt-6 animate-fade-in" style={{ animationDelay: '0.4s' }}>
-            <a 
-              href="https://wa.me/552136497932"
-              target="_blank"
-              rel="noopener noreferrer"
-              className="relative inline-block px-8 sm:px-12 py-3 sm:py-4 text-sm sm:text-[15px] font-bold rounded-2xl outline-none transition-all duration-300 uppercase cursor-pointer"
-              style={{
-                color: '#6BE4E4',
-                backgroundColor: 'rgb(30, 80, 80)',
-                border: '.25em solid #6BE4E4',
-                boxShadow: '0 0 1em .25em #6BE4E4, 0 0 4em 1em rgba(107, 228, 228, 0.6), inset 0 0 .75em .25em #6BE4E4',
-                textShadow: '0 0 .5em #6BE4E4'
-              }}
-              onMouseEnter={(e) => {
-                e.currentTarget.style.color = 'rgb(30, 80, 80)';
-                e.currentTarget.style.backgroundColor = '#6BE4E4';
-                e.currentTarget.style.boxShadow = '0 0 1em .25em #6BE4E4, 0 0 4em 2em rgba(107, 228, 228, 0.6), inset 0 0 .75em .25em #6BE4E4';
-              }}
-              onMouseLeave={(e) => {
-                e.currentTarget.style.color = '#6BE4E4';
-                e.currentTarget.style.backgroundColor = 'rgb(30, 80, 80)';
-                e.currentTarget.style.boxShadow = '0 0 1em .25em #6BE4E4, 0 0 4em 1em rgba(107, 228, 228, 0.6), inset 0 0 .75em .25em #6BE4E4';
-              }}
-              onMouseDown={(e) => {
-                e.currentTarget.style.boxShadow = '0 0 0.6em .25em #6BE4E4, 0 0 2.5em 2em rgba(107, 228, 228, 0.6), inset 0 0 .5em .25em #6BE4E4';
-              }}
-            >
-              Falar com um especialista
-              <span 
-                className="absolute top-[120%] left-0 h-full w-full opacity-70 pointer-events-none"
+      <div className="container relative z-10 mx-auto px-4 sm:px-6 py-20 sm:py-8">
+        <div className="grid lg:grid-cols-2 gap-8 lg:gap-12 items-center min-h-[calc(100vh-8rem)]">
+          {/* Left Column - Content */}
+          <div className="space-y-6 sm:space-y-8 text-center lg:text-left">
+            <h1 className="text-3xl sm:text-4xl md:text-5xl lg:text-6xl font-bold leading-tight animate-fade-in">
+              <span className="block text-white mb-3 sm:mb-4">Seu parceiro de</span>
+              <span className="block text-white">Outsourcing de TI no Rio</span>
+            </h1>
+            
+            <div className="animate-fade-in" style={{ animationDelay: '0.2s' }}>
+              <p className="text-lg sm:text-xl text-white/90 leading-relaxed">
+                Times dedicados que aceleram seus projetos e apagam incêndios.
+              </p>
+            </div>
+            
+            <div className="pt-4 sm:pt-6 animate-fade-in flex justify-center lg:justify-start" style={{ animationDelay: '0.4s' }}>
+              <a 
+                href="https://wa.me/552136497932"
+                target="_blank"
+                rel="noopener noreferrer"
+                className="relative inline-block px-8 sm:px-12 py-3 sm:py-4 text-sm sm:text-[15px] font-bold rounded-2xl outline-none transition-all duration-300 uppercase cursor-pointer"
                 style={{
-                  backgroundColor: 'rgba(107, 228, 228, 0.6)',
-                  filter: 'blur(2em)',
-                  transform: 'perspective(1.5em) rotateX(35deg) scale(1, .6)'
+                  color: '#6BE4E4',
+                  backgroundColor: 'rgb(30, 80, 80)',
+                  border: '.25em solid #6BE4E4',
+                  boxShadow: '0 0 1em .25em #6BE4E4, 0 0 4em 1em rgba(107, 228, 228, 0.6), inset 0 0 .75em .25em #6BE4E4',
+                  textShadow: '0 0 .5em #6BE4E4'
                 }}
-              />
-            </a>
+                onMouseEnter={(e) => {
+                  e.currentTarget.style.color = 'rgb(30, 80, 80)';
+                  e.currentTarget.style.backgroundColor = '#6BE4E4';
+                  e.currentTarget.style.boxShadow = '0 0 1em .25em #6BE4E4, 0 0 4em 2em rgba(107, 228, 228, 0.6), inset 0 0 .75em .25em #6BE4E4';
+                }}
+                onMouseLeave={(e) => {
+                  e.currentTarget.style.color = '#6BE4E4';
+                  e.currentTarget.style.backgroundColor = 'rgb(30, 80, 80)';
+                  e.currentTarget.style.boxShadow = '0 0 1em .25em #6BE4E4, 0 0 4em 1em rgba(107, 228, 228, 0.6), inset 0 0 .75em .25em #6BE4E4';
+                }}
+                onMouseDown={(e) => {
+                  e.currentTarget.style.boxShadow = '0 0 0.6em .25em #6BE4E4, 0 0 2.5em 2em rgba(107, 228, 228, 0.6), inset 0 0 .5em .25em #6BE4E4';
+                }}
+              >
+                Falar com um especialista
+                <span 
+                  className="absolute top-[120%] left-0 h-full w-full opacity-70 pointer-events-none"
+                  style={{
+                    backgroundColor: 'rgba(107, 228, 228, 0.6)',
+                    filter: 'blur(2em)',
+                    transform: 'perspective(1.5em) rotateX(35deg) scale(1, .6)'
+                  }}
+                />
+              </a>
+            </div>
+          </div>
+
+          {/* Right Column - Form */}
+          <div className="animate-fade-in" style={{ animationDelay: '0.3s' }}>
+            <form onSubmit={handleSubmit} className="bg-gradient-to-br from-card via-card/90 to-card border border-primary/20 rounded-2xl p-6 sm:p-8 space-y-4 sm:space-y-6 card-glow">
+              <div className="text-center mb-4">
+                <h3 className="text-xl sm:text-2xl font-bold text-white mb-2">
+                  Solicite uma Proposta
+                </h3>
+                <p className="text-sm text-white/70">
+                  Preencha o formulário e fale com um especialista
+                </p>
+              </div>
+
+              <div className="grid sm:grid-cols-2 gap-4">
+                <div className="space-y-2">
+                  <Label htmlFor="nome" className="text-white">Nome *</Label>
+                  <Input 
+                    id="nome" 
+                    name="nome"
+                    value={formData.nome}
+                    onChange={handleChange}
+                    placeholder="Seu nome completo"
+                    required
+                    className="bg-background/50 border-primary/20"
+                  />
+                </div>
+                
+                <div className="space-y-2">
+                  <Label htmlFor="empresa" className="text-white">Empresa</Label>
+                  <Input 
+                    id="empresa" 
+                    name="empresa"
+                    value={formData.empresa}
+                    onChange={handleChange}
+                    placeholder="Nome da empresa"
+                    className="bg-background/50 border-primary/20"
+                  />
+                </div>
+              </div>
+
+              <div className="grid sm:grid-cols-2 gap-4">
+                <div className="space-y-2">
+                  <Label htmlFor="colaboradores" className="text-white">Nº de colaboradores</Label>
+                  <Input 
+                    id="colaboradores" 
+                    name="colaboradores"
+                    value={formData.colaboradores}
+                    onChange={handleChange}
+                    type="number"
+                    placeholder="Ex: 50"
+                    className="bg-background/50 border-primary/20"
+                  />
+                </div>
+                
+                <div className="space-y-2">
+                  <Label htmlFor="computadores" className="text-white">Nº de computadores</Label>
+                  <Input 
+                    id="computadores" 
+                    name="computadores"
+                    value={formData.computadores}
+                    onChange={handleChange}
+                    type="number"
+                    placeholder="Ex: 40"
+                    className="bg-background/50 border-primary/20"
+                  />
+                </div>
+              </div>
+
+              <div className="grid sm:grid-cols-2 gap-4">
+                <div className="space-y-2">
+                  <Label htmlFor="telefone" className="text-white">Telefone/WhatsApp *</Label>
+                  <Input 
+                    id="telefone" 
+                    name="telefone"
+                    value={formData.telefone}
+                    onChange={handleChange}
+                    type="tel"
+                    placeholder="(11) 99999-9999"
+                    required
+                    className="bg-background/50 border-primary/20"
+                  />
+                </div>
+                
+                <div className="space-y-2">
+                  <Label htmlFor="email" className="text-white">E-mail *</Label>
+                  <Input 
+                    id="email" 
+                    name="email"
+                    value={formData.email}
+                    onChange={handleChange}
+                    type="email"
+                    placeholder="seu@email.com"
+                    required
+                    className="bg-background/50 border-primary/20"
+                  />
+                </div>
+              </div>
+
+              <button 
+                type="submit"
+                className="relative w-full px-8 py-3 text-sm font-bold rounded-2xl outline-none transition-all duration-300 uppercase cursor-pointer"
+                style={{
+                  color: '#6BE4E4',
+                  backgroundColor: 'rgb(30, 80, 80)',
+                  border: '.25em solid #6BE4E4',
+                  boxShadow: '0 0 1em .25em #6BE4E4, 0 0 4em 1em rgba(107, 228, 228, 0.6), inset 0 0 .75em .25em #6BE4E4',
+                  textShadow: '0 0 .5em #6BE4E4'
+                }}
+                onMouseEnter={(e) => {
+                  e.currentTarget.style.color = 'rgb(30, 80, 80)';
+                  e.currentTarget.style.backgroundColor = '#6BE4E4';
+                  e.currentTarget.style.boxShadow = '0 0 1em .25em #6BE4E4, 0 0 4em 2em rgba(107, 228, 228, 0.6), inset 0 0 .75em .25em #6BE4E4';
+                }}
+                onMouseLeave={(e) => {
+                  e.currentTarget.style.color = '#6BE4E4';
+                  e.currentTarget.style.backgroundColor = 'rgb(30, 80, 80)';
+                  e.currentTarget.style.boxShadow = '0 0 1em .25em #6BE4E4, 0 0 4em 1em rgba(107, 228, 228, 0.6), inset 0 0 .75em .25em #6BE4E4';
+                }}
+                onMouseDown={(e) => {
+                  e.currentTarget.style.boxShadow = '0 0 0.6em .25em #6BE4E4, 0 0 2.5em 2em rgba(107, 228, 228, 0.6), inset 0 0 .5em .25em #6BE4E4';
+                }}
+              >
+                Falar agora com um especialista
+                <span 
+                  className="absolute top-[120%] left-0 h-full w-full opacity-70 pointer-events-none"
+                  style={{
+                    backgroundColor: 'rgba(107, 228, 228, 0.6)',
+                    filter: 'blur(2em)',
+                    transform: 'perspective(1.5em) rotateX(35deg) scale(1, .6)'
+                  }}
+                />
+              </button>
+            </form>
           </div>
         </div>
         
