@@ -187,17 +187,18 @@ const Hero = () => {
           {/* Left Column - Content */}
           <div className="space-y-6 sm:space-y-8 text-center lg:text-left">
             <div className="flex flex-col lg:flex-row items-center lg:items-start gap-0 sm:gap-1 lg:gap-6">
-              <div className="flex-shrink-0 animate-fade-in order-first">
+              <div className="flex-shrink-0 animate-fade-in order-first relative">
                 <img 
                   src={professionalPhoto} 
                   alt="Especialista Megabitz" 
                   className="w-32 h-32 sm:w-40 sm:h-40 lg:w-48 lg:h-48 object-contain transition-all duration-300 hover:scale-105 hover:drop-shadow-[0_0_20px_rgba(107,228,228,0.4)]"
                 />
+                <span className="pointer-events-none absolute -bottom-1 left-1/2 -translate-x-1/2 w-24 h-2 sm:w-28 sm:h-2.5 bg-black/50 rounded-full blur-md opacity-70" />
               </div>
-              <div className="flex-1 space-y-4 order-last -mt-1 sm:mt-0">
+              <div className="flex-1 space-y-4 order-last -mt-2 sm:mt-0 lg:mt-0">
                 <h1 className="text-3xl sm:text-4xl md:text-5xl lg:text-5xl font-bold leading-tight animate-fade-in">
-                  <span className="block text-white mb-2">Seu parceiro de</span>
-                  <span className="block text-white mb-2">Outsourcing de TI</span>
+                  <span className="block text-white mb-1">Seu parceiro de</span>
+                  <span className="block text-white mb-1">Outsourcing de TI</span>
                   <span className="block text-white">no Rio</span>
                 </h1>
               </div>
