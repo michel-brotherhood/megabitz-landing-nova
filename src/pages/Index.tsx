@@ -17,9 +17,9 @@ const Index = () => {
       <Navigation />
       <Hero />
       <AboutMegabitz />
+      <TechSpecs />
       <Stats />
       <Differentials />
-      <TechSpecs />
       <WhatsIncluded />
       <HowItWorks />
       <FAQ />
