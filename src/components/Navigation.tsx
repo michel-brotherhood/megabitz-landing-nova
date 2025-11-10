@@ -4,6 +4,7 @@ import megabitzLogo from "@/assets/megabitz-logo.png";
 
 const Navigation = () => {
   const [isOpen, setIsOpen] = useState(false);
+  const [activeSection, setActiveSection] = useState("");
 
   // Bloquear scroll quando menu está aberto
   useEffect(() => {
@@ -16,6 +17,34 @@ const Navigation = () => {
       document.body.style.overflow = 'unset';
     };
   }, [isOpen]);
+
+  // Detectar seção ativa ao rolar
+  useEffect(() => {
+    const handleScroll = () => {
+      const sections = ['#', '#sobre', '#recursos', '#contato'];
+      const scrollPosition = window.scrollY + 100;
+
+      for (let i = sections.length - 1; i >= 0; i--) {
+        const section = sections[i];
+        const element = section === '#' 
+          ? document.body 
+          : document.querySelector(section);
+        
+        if (element) {
+          const offsetTop = section === '#' ? 0 : (element as HTMLElement).offsetTop;
+          if (scrollPosition >= offsetTop) {
+            setActiveSection(section);
+            break;
+          }
+        }
+      }
+    };
+
+    window.addEventListener('scroll', handleScroll);
+    handleScroll();
+    
+    return () => window.removeEventListener('scroll', handleScroll);
+  }, []);
 
   const menuItems = [
     { label: "Início", href: "#" },
@@ -44,9 +73,14 @@ const Navigation = () => {
                 <a
                   key={index}
                   href={item.href}
-                  className="text-sm font-semibold text-white hover:text-primary transition-all duration-300 tracking-wider uppercase"
+                  className={`text-sm font-semibold hover:text-primary transition-all duration-300 tracking-wider uppercase relative ${
+                    activeSection === item.href ? 'text-primary' : 'text-white'
+                  }`}
                 >
                   {item.label}
+                  {activeSection === item.href && (
+                    <span className="absolute -bottom-1 left-0 w-full h-0.5 bg-primary animate-fade-in" />
+                  )}
                 </a>
               ))}
             </div>

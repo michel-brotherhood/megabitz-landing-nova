@@ -196,7 +196,7 @@ Gostaria de falar com um consultor sobre os serviços da Megabitz.`;
                 href="https://wa.me/552136497932"
                 target="_blank"
                 rel="noopener noreferrer"
-                className="relative inline-block px-8 sm:px-12 py-3 sm:py-4 text-sm sm:text-[15px] font-bold rounded-2xl outline-none transition-all duration-300 uppercase cursor-pointer"
+                className="relative inline-flex items-center gap-2 px-8 sm:px-12 py-3 sm:py-4 text-sm sm:text-[15px] font-bold rounded-2xl outline-none transition-all duration-300 uppercase cursor-pointer"
                 style={{
                   color: '#6BE4E4',
                   backgroundColor: 'rgb(30, 80, 80)',
@@ -218,7 +218,8 @@ Gostaria de falar com um consultor sobre os serviços da Megabitz.`;
                   e.currentTarget.style.boxShadow = '0 0 0.6em .25em #6BE4E4, 0 0 2.5em 2em rgba(107, 228, 228, 0.6), inset 0 0 .5em .25em #6BE4E4';
                 }}
               >
-                Falar com um especialista
+                <MessageCircle className="w-5 h-5" />
+                Dúvidas? Vamos Conversar
                 <span 
                   className="absolute top-[120%] left-0 h-full w-full opacity-70 pointer-events-none"
                   style={{
