@@ -203,24 +203,68 @@ const Hero = () => {
               <span className="block text-white">no Rio</span>
             </h1>
             
-            {/* Desktop - Foto junto ao texto descritivo */}
+            {/* Desktop - Foto junto ao texto descritivo e botão */}
             <div className="animate-fade-in" style={{ animationDelay: '0.2s' }}>
-              <div className="lg:flex lg:items-center lg:gap-4">
-                <div className="hidden lg:block relative">
-                  <img 
-                    src={professionalPhoto} 
-                    alt="Especialista Megabitz" 
-                    className="w-40 h-40 lg:w-48 lg:h-48 object-contain transition-all duration-300 hover:scale-105 hover:drop-shadow-[0_0_20px_rgba(107,228,228,0.4)]"
-                  />
-                  <span className="pointer-events-none absolute -bottom-1 left-1/2 -translate-x-1/2 w-28 h-2.5 bg-black/50 rounded-full blur-md opacity-70" />
+              <div className="lg:flex lg:flex-col lg:gap-1">
+                <div className="lg:flex lg:items-center lg:gap-4">
+                  <div className="hidden lg:block relative flex-shrink-0">
+                    <img 
+                      src={professionalPhoto} 
+                      alt="Especialista Megabitz" 
+                      className="w-40 h-40 lg:w-48 lg:h-48 object-contain transition-all duration-300 hover:scale-105 hover:drop-shadow-[0_0_20px_rgba(107,228,228,0.4)]"
+                    />
+                    <span className="pointer-events-none absolute -bottom-1 left-1/2 -translate-x-1/2 w-28 h-2.5 bg-black/50 rounded-full blur-md opacity-70" />
+                  </div>
+                  <p className="text-lg sm:text-xl text-white/90 leading-relaxed">
+                    Times dedicados com Especialistas que resolvem seus desafios de TI, que aceleram seus projetos e apagam incêndios.
+                  </p>
                 </div>
-                <p className="text-lg sm:text-xl text-white/90 leading-relaxed">
-                  Times dedicados com Especialistas que resolvem seus desafios de TI, que aceleram seus projetos e apagam incêndios.
-                </p>
+                
+                {/* Botão no desktop */}
+                <div className="hidden lg:flex animate-fade-in" style={{ animationDelay: '0.4s' }}>
+                  <a 
+                    href="https://api.whatsapp.com/send/?phone=552136497932&text&type=phone_number&app_absent=0"
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    className="relative inline-flex items-center gap-2 px-8 sm:px-12 py-3 sm:py-4 text-sm sm:text-[15px] font-bold rounded-2xl outline-none transition-all duration-300 uppercase cursor-pointer"
+                    style={{
+                      color: '#6BE4E4',
+                      backgroundColor: 'rgb(30, 80, 80)',
+                      border: '.25em solid #6BE4E4',
+                      boxShadow: '0 0 1em .25em #6BE4E4, 0 0 4em 1em rgba(107, 228, 228, 0.6), inset 0 0 .75em .25em #6BE4E4',
+                      textShadow: '0 0 .5em #6BE4E4'
+                    }}
+                    onMouseEnter={(e) => {
+                      e.currentTarget.style.color = 'rgb(30, 80, 80)';
+                      e.currentTarget.style.backgroundColor = '#6BE4E4';
+                      e.currentTarget.style.boxShadow = '0 0 1em .25em #6BE4E4, 0 0 4em 2em rgba(107, 228, 228, 0.6), inset 0 0 .75em .25em #6BE4E4';
+                    }}
+                    onMouseLeave={(e) => {
+                      e.currentTarget.style.color = '#6BE4E4';
+                      e.currentTarget.style.backgroundColor = 'rgb(30, 80, 80)';
+                      e.currentTarget.style.boxShadow = '0 0 1em .25em #6BE4E4, 0 0 4em 1em rgba(107, 228, 228, 0.6), inset 0 0 .75em .25em #6BE4E4';
+                    }}
+                    onMouseDown={(e) => {
+                      e.currentTarget.style.boxShadow = '0 0 0.6em .25em #6BE4E4, 0 0 2.5em 2em rgba(107, 228, 228, 0.6), inset 0 0 .5em .25em #6BE4E4';
+                    }}
+                  >
+                    <MessageCircle className="w-5 h-5" />
+                    Dúvidas? Vamos Conversar
+                    <span 
+                      className="absolute top-[120%] left-0 h-full w-full opacity-70 pointer-events-none"
+                      style={{
+                        backgroundColor: 'rgba(107, 228, 228, 0.6)',
+                        filter: 'blur(2em)',
+                        transform: 'perspective(1.5em) rotateX(35deg) scale(1, .6)'
+                      }}
+                    />
+                  </a>
+                </div>
               </div>
             </div>
             
-            <div className="pt-4 sm:pt-6 lg:pt-0 lg:-mt-8 animate-fade-in flex justify-center lg:justify-start" style={{ animationDelay: '0.4s' }}>
+            {/* Botão no mobile */}
+            <div className="pt-4 sm:pt-6 lg:hidden animate-fade-in flex justify-center" style={{ animationDelay: '0.4s' }}>
               <a 
                 href="https://api.whatsapp.com/send/?phone=552136497932&text&type=phone_number&app_absent=0"
                 target="_blank"
