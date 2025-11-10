@@ -300,7 +300,7 @@ const ContactForm = () => {
                 className={errors.aceitaPolitica && touched.aceitaPolitica ? 'border-red-500' : ''}
               />
               <Label htmlFor="aceitaPolitica-contact" className="text-xs text-foreground/80 leading-tight cursor-pointer">
-                Aceito a <a href="/privacidade" className="text-primary hover:underline" target="_blank">política de privacidade</a> e autorizo o contato da Megabitz Tecnologia
+                Aceito a <a href="/privacidade" className="text-primary hover:underline" onClick={(e) => { e.preventDefault(); window.open('/privacidade', '_blank'); }}>política de privacidade</a> e autorizo o contato da Megabitz Tecnologia
               </Label>
             </div>
             {errors.aceitaPolitica && touched.aceitaPolitica && (

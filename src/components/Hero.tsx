@@ -373,7 +373,7 @@ const Hero = () => {
                 />
                 <div className="flex-1">
                   <Label htmlFor="aceitaPolitica" className="text-xs text-white/80 leading-tight cursor-pointer">
-                    Aceito a <a href="/privacidade" className="text-primary hover:underline" target="_blank">política de privacidade</a> e autorizo o contato da Megabitz Tecnologia
+                    Aceito a <a href="/privacidade" className="text-primary hover:underline" onClick={(e) => { e.preventDefault(); window.open('/privacidade', '_blank'); }}>política de privacidade</a> e autorizo o contato da Megabitz Tecnologia
                   </Label>
                   {errors.aceitaPolitica && touched.aceitaPolitica && (
                     <p className="text-red-500 text-xs mt-1">{errors.aceitaPolitica}</p>
