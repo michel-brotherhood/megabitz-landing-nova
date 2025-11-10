@@ -196,8 +196,9 @@ const Hero = () => {
           {/* Left Column - Content */}
           <div className="space-y-6 sm:space-y-8 text-center lg:text-left">
             <h1 className="text-3xl sm:text-4xl md:text-5xl lg:text-6xl font-bold leading-tight animate-fade-in">
-              <span className="block text-white mb-3 sm:mb-4">Seu parceiro de</span>
-              <span className="block text-white">Outsourcing de TI no Rio</span>
+              <span className="block text-white mb-2 sm:mb-3">Seu parceiro de</span>
+              <span className="block text-white mb-2">Outsourcing de TI</span>
+              <span className="block text-white">no Rio</span>
             </h1>
             
             <div className="animate-fade-in" style={{ animationDelay: '0.2s' }}>
