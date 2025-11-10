@@ -1,7 +1,4 @@
 import { serve } from "https://deno.land/std@0.190.0/http/server.ts";
-import { Resend } from "https://esm.sh/resend@4.0.0";
-
-const resend = new Resend(Deno.env.get("RESEND_API_KEY"));
 
 const corsHeaders = {
   'Access-Control-Allow-Origin': '*',
@@ -28,39 +25,79 @@ const handler = async (req: Request): Promise<Response> => {
     
     console.log('Sending email with data:', formData);
 
-    const emailContent = `
-      <div style="font-family: Arial, sans-serif; max-width: 600px; margin: 0 auto;">
-        <h2 style="color: #1e3a5f;">Nova mensagem de contato - Megabitz</h2>
-        
-        <div style="background: #f5f5f5; padding: 20px; border-radius: 8px; margin: 20px 0;">
-          <p><strong>Nome:</strong> ${formData.name}</p>
-          <p><strong>Email:</strong> ${formData.email}</p>
-          <p><strong>Telefone:</strong> ${formData.phone}</p>
-          <p><strong>Empresa:</strong> ${formData.company}</p>
-          ${formData.employees ? `<p><strong>Tamanho da Empresa:</strong> ${formData.employees}</p>` : ''}
-          ${formData.challenges ? `<p><strong>Desafios:</strong> ${formData.challenges}</p>` : ''}
-        </div>
-        
-        <p style="color: #666; font-size: 12px;">Este email foi enviado automaticamente do formulário de contato do site.</p>
-      </div>
-    `;
+    const smtpHost = Deno.env.get('SMTP_HOST') || '';
+    const smtpPort = parseInt(Deno.env.get('SMTP_PORT') || '465');
+    const smtpUser = Deno.env.get('SMTP_USER') || '';
+    const smtpPassword = Deno.env.get('SMTP_PASSWORD') || '';
 
-    const emailResponse = await resend.emails.send({
-      from: "Megabitz <onboarding@resend.dev>",
-      to: ["contato@agenciattx.com.br"],
-      subject: `Nova mensagem de ${formData.name} - ${formData.company}`,
-      html: emailContent,
+    const emailContent = `Nova mensagem de contato recebida:
+
+Nome: ${formData.name}
+Email: ${formData.email}
+Telefone: ${formData.phone}
+Empresa: ${formData.company}
+${formData.employees ? `Tamanho da Empresa: ${formData.employees}` : ''}
+${formData.challenges ? `Desafios: ${formData.challenges}` : ''}
+
+---
+Este email foi enviado automaticamente do formulário de contato do site.`;
+
+    // Create connection
+    const conn = await Deno.connectTls({
+      hostname: smtpHost,
+      port: smtpPort,
     });
 
-    console.log("Email sent successfully:", emailResponse);
+    const encoder = new TextEncoder();
+    const decoder = new TextDecoder();
 
-    return new Response(
-      JSON.stringify({ success: true }),
-      { 
-        headers: { ...corsHeaders, 'Content-Type': 'application/json' },
-        status: 200,
-      },
-    );
+    // Helper function to send command and read response
+    async function sendCommand(conn: Deno.TlsConn, command: string): Promise<string> {
+      await conn.write(encoder.encode(command + '\r\n'));
+      const buffer = new Uint8Array(1024);
+      const n = await conn.read(buffer);
+      if (!n) throw new Error("No response from server");
+      return decoder.decode(buffer.subarray(0, n));
+    }
+
+    try {
+      // Read initial greeting
+      const buffer = new Uint8Array(1024);
+      await conn.read(buffer);
+
+      // SMTP handshake
+      await sendCommand(conn, `EHLO ${smtpHost}`);
+      await sendCommand(conn, `AUTH LOGIN`);
+      await sendCommand(conn, btoa(smtpUser));
+      await sendCommand(conn, btoa(smtpPassword));
+      await sendCommand(conn, `MAIL FROM:<${smtpUser}>`);
+      await sendCommand(conn, `RCPT TO:<megabitz@agenciattx.com.br>`);
+      await sendCommand(conn, `DATA`);
+
+      // Send email content
+      const emailMessage = `From: ${smtpUser}\r\nTo: megabitz@agenciattx.com.br\r\nSubject: Nova mensagem de ${formData.name} - ${formData.company}\r\nContent-Type: text/plain; charset=utf-8\r\n\r\n${emailContent}\r\n.\r\n`;
+      await conn.write(encoder.encode(emailMessage));
+      
+      // Read final response
+      await conn.read(buffer);
+      
+      // Close connection
+      await sendCommand(conn, 'QUIT');
+      conn.close();
+
+      console.log("Email sent successfully");
+
+      return new Response(
+        JSON.stringify({ success: true }),
+        { 
+          headers: { ...corsHeaders, 'Content-Type': 'application/json' },
+          status: 200,
+        },
+      );
+    } catch (smtpError) {
+      conn.close();
+      throw smtpError;
+    }
   } catch (error: any) {
     console.error('Error sending email:', error);
     return new Response(
