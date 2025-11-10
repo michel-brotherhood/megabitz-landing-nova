@@ -31,36 +31,22 @@ const Footer = () => {
   };
 
   return (
-    <footer className="relative border-t border-border bg-card/30">
-      {/* Google Badge - Positioned above footer */}
-      <div className="absolute -top-12 left-1/2 -translate-x-1/2 md:left-auto md:right-12 md:translate-x-0 z-10">
-        <a 
-          href="https://www.google.com/search?q=megabitz+tecnologia&sourceid=chrome&ie=UTF-8#lrd=0x997e75742ac2a9:0x7eadf9bd117d7cb,1,,,," 
-          target="_blank" 
-          rel="noopener noreferrer"
-          className="block hover:scale-105 transition-transform duration-300"
-        >
-          <img 
-            src={googleStars} 
-            alt="Google 5 Estrelas" 
-            className="h-24 w-auto drop-shadow-2xl"
-          />
-        </a>
-      </div>
-
-      <div className="container mx-auto px-4 py-12 pt-16">
+    <footer className="border-t border-border bg-card/30">
+      <div className="container mx-auto px-4 py-12">
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8 mb-12 text-center md:text-left">
           {/* Brand */}
           <div className="space-y-4 flex flex-col items-center md:items-start">
-            <img 
-              src={megabitzLogo} 
-              alt="Megabitz Tecnologia" 
-              className="h-12 w-auto"
-            />
-            <p className="text-sm text-muted-foreground">
-              TI sem drama. Segurança de verdade para sua empresa.
-            </p>
-            <div className="space-y-1 text-sm text-muted-foreground">
+            <div className="flex flex-col items-center md:items-start gap-4 w-full">
+              <img 
+                src={megabitzLogo} 
+                alt="Megabitz Tecnologia" 
+                className="h-12 w-auto"
+              />
+              <p className="text-sm text-muted-foreground">
+                TI sem drama. Segurança de verdade para sua empresa.
+              </p>
+            </div>
+            <div className="space-y-1 text-sm text-muted-foreground w-full">
               <p className="font-medium">CNPJ: 10.610.465/0001-18</p>
               <p>Rua Barão de São Francisco, 373</p>
               <p>Sala 312 – Vila Isabel, Rio de Janeiro</p>
@@ -126,16 +112,30 @@ const Footer = () => {
             <div className="space-y-3 text-sm">
               <a 
                 href="mailto:comercial@megabitz.com.br"
-                className="text-muted-foreground hover:text-primary transition-colors flex items-center gap-2"
+                className="text-muted-foreground hover:text-primary transition-colors flex items-center gap-2 justify-center md:justify-start"
               >
                 <span>comercial@megabitz.com.br</span>
               </a>
               <a 
                 href="tel:+552136497932"
-                className="text-muted-foreground hover:text-primary transition-colors flex items-center gap-2"
+                className="text-muted-foreground hover:text-primary transition-colors flex items-center gap-2 justify-center md:justify-start"
               >
                 <Phone className="h-4 w-4" />
                 <span>(21) 3649-7932</span>
+              </a>
+            </div>
+            <div className="mt-6">
+              <a 
+                href="https://www.google.com/search?q=megabitz+tecnologia&sourceid=chrome&ie=UTF-8#lrd=0x997e75742ac2a9:0x7eadf9bd117d7cb,1,,,," 
+                target="_blank" 
+                rel="noopener noreferrer"
+                className="block hover:opacity-80 transition-opacity"
+              >
+                <img 
+                  src={googleStars} 
+                  alt="Google 5 Estrelas - 86 avaliações" 
+                  className="h-20 w-auto"
+                />
               </a>
             </div>
           </div>
