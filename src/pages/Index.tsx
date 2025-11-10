@@ -10,6 +10,7 @@ import AboutMegabitz from "@/components/AboutMegabitz";
 import Stats from "@/components/Stats";
 import ContactForm from "@/components/ContactForm";
 import Footer from "@/components/Footer";
+import WhatsAppFloat from "@/components/WhatsAppFloat";
 
 const Index = () => {
   return (
@@ -26,6 +27,7 @@ const Index = () => {
       <Testimonials />
       <ContactForm />
       <Footer />
+      <WhatsAppFloat />
     </div>
   );
 };

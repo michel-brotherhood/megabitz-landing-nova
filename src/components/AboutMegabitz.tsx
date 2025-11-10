@@ -1,5 +1,5 @@
 import { Button } from "./ui/button";
-import teamHands from "@/assets/team-hands.png";
+import teamVideo from "@/assets/team-video.mp4";
 
 const AboutMegabitz = () => {
   const handleWhatsAppClick = () => {
@@ -36,13 +36,18 @@ const AboutMegabitz = () => {
               </Button>
             </div>
 
-            {/* Image - Right */}
-            <div className="relative">
-              <img 
-                src={teamHands} 
-                alt="Equipe Megabitz trabalhando em conjunto" 
-                className="w-full h-auto rounded-lg"
-              />
+            {/* Video - Right */}
+            <div className="relative rounded-lg overflow-hidden">
+              <video 
+                src={teamVideo}
+                autoPlay
+                loop
+                muted
+                playsInline
+                className="w-full h-auto"
+              >
+                Seu navegador não suporta vídeos.
+              </video>
             </div>
           </div>
         </div>

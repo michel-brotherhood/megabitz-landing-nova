@@ -51,8 +51,8 @@ const Differentials = () => {
                 <div className="bg-gradient-to-br from-[#1e3a5f]/90 to-[#2a4a7c]/90 backdrop-blur-sm border border-[#6be4e4]/30 rounded-2xl p-8 hover:border-[#6be4e4]/50 transition-all duration-300 h-full">
                   {/* Play icon */}
                   <div className="flex items-start gap-4 mb-4">
-                    <div className="flex-shrink-0">
-                      <Play className="w-10 h-10 text-[#6be4e4] fill-[#6be4e4]" />
+                    <div className="flex-shrink-0 group-hover:scale-110 group-hover:rotate-12 transition-all duration-300">
+                      <Play className="w-10 h-10 text-[#6be4e4] fill-[#6be4e4] group-hover:drop-shadow-[0_0_8px_rgba(107,228,228,0.8)]" />
                     </div>
                     <div>
                       <h3 className="text-xl font-bold text-[#6be4e4] mb-3">

@@ -56,8 +56,8 @@ const TechSpecs = () => {
                 >
                   <div className="bg-[#1a2d4d]/80 backdrop-blur-sm border border-[#6be4e4]/20 rounded-2xl p-8 hover:border-[#6be4e4]/40 transition-all duration-300 h-full">
                     {/* Icon */}
-                    <div className="absolute -top-6 right-8 w-16 h-16 rounded-2xl bg-[#6be4e4]/20 border-2 border-[#6be4e4] flex items-center justify-center">
-                      <IconComponent className="w-8 h-8 text-[#6be4e4]" />
+                    <div className="absolute -top-6 right-8 w-16 h-16 rounded-2xl bg-[#6be4e4]/20 border-2 border-[#6be4e4] flex items-center justify-center group-hover:scale-110 group-hover:rotate-6 transition-all duration-300">
+                      <IconComponent className="w-8 h-8 text-[#6be4e4] group-hover:drop-shadow-[0_0_8px_rgba(107,228,228,0.8)]" />
                     </div>
                     
                     {/* Content */}
