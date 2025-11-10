@@ -46,7 +46,7 @@ const handler = async (req: Request): Promise<Response> => {
 
     await client.send({
       from: Deno.env.get("SMTP_USER") || "",
-      to: "smtp@idlab.art.br",
+      to: "contato@agenciattx.com.br",
       subject: `Nova Solicitação de Contato - ${name}`,
       content: emailBody,
       html: emailBody,
