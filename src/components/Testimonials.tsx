@@ -139,16 +139,16 @@ const Testimonials = () => {
           >
             <div className="text-center">
               <div className="text-4xl md:text-5xl font-bold mb-2" style={{ color: '#FF6B35' }}>
-                4.9/5.0
+                5.0
               </div>
-              <p className="text-sm text-foreground/70">Média de avaliações</p>
+              <p className="text-sm text-foreground/70">Nota no Google</p>
             </div>
             <div className="h-16 w-px bg-[#FF6B35]/30" />
             <div className="text-center">
               <div className="text-4xl md:text-5xl font-bold mb-2" style={{ color: '#FF6B35' }}>
-                500+
+                86
               </div>
-              <p className="text-sm text-foreground/70">Avaliações no Google</p>
+              <p className="text-sm text-foreground/70">Avaliações</p>
             </div>
           </div>
         </div>

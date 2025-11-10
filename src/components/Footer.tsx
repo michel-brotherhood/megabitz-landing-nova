@@ -1,39 +1,46 @@
-import { Shield, Instagram, Facebook } from "lucide-react";
+import { Instagram, Facebook } from "lucide-react";
+import megabitzLogo from "@/assets/megabitz-logo-white.png";
+import googleStars from "@/assets/google-5-stars.png";
 
 const Footer = () => {
   const footerLinks = {
-    produto: [
-      { label: "Recursos", href: "#" },
-      { label: "Segurança", href: "#" },
-      { label: "Preços", href: "#" },
-      { label: "Casos de Uso", href: "#" }
+    servicos: [
+      { 
+        label: "Suporte Técnico", 
+        href: "https://wa.me/552136497932?text=Olá,%20tenho%20interesse%20em%20Suporte%20Técnico" 
+      },
+      { 
+        label: "Segurança da Informação", 
+        href: "https://wa.me/552136497932?text=Olá,%20tenho%20interesse%20em%20Segurança%20da%20Informação" 
+      },
+      { 
+        label: "Infraestrutura de TI", 
+        href: "https://wa.me/552136497932?text=Olá,%20tenho%20interesse%20em%20Infraestrutura%20de%20TI" 
+      },
+      { 
+        label: "Consultoria", 
+        href: "https://wa.me/552136497932?text=Olá,%20tenho%20interesse%20em%20Consultoria" 
+      }
     ],
     empresa: [
-      { label: "Sobre Nós", href: "#" },
-      { label: "Blog", href: "#" },
-      { label: "Carreiras", href: "#" },
-      { label: "Contato", href: "#" }
-    ],
-    suporte: [
-      { label: "Documentação", href: "#" },
-      { label: "Central de Ajuda", href: "#" },
-      { label: "Status", href: "#" },
-      { label: "API", href: "#" }
+      { label: "Sobre Nós", href: "#sobre" },
+      { label: "Recursos", href: "#recursos" },
+      { label: "Diferenciais", href: "#diferenciais" },
+      { label: "Contato", href: "#contato" }
     ]
   };
 
   return (
     <footer className="border-t border-border bg-card/30">
       <div className="container mx-auto px-4 py-12">
-        <div className="grid md:grid-cols-2 lg:grid-cols-4 gap-8 mb-12">
+        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8 mb-12 text-center md:text-left">
           {/* Brand */}
-          <div className="space-y-4">
-            <div className="flex items-center gap-2">
-              <div className="w-8 h-8 rounded-lg bg-primary/20 flex items-center justify-center">
-                <Shield className="w-5 h-5 text-primary" />
-              </div>
-              <span className="font-bold text-lg glow-text">Megabitz Tecnologia</span>
-            </div>
+          <div className="space-y-4 flex flex-col items-center md:items-start">
+            <img 
+              src={megabitzLogo} 
+              alt="Megabitz Tecnologia" 
+              className="h-12 w-auto"
+            />
             <p className="text-sm text-muted-foreground">
               TI sem drama. Segurança de verdade para sua empresa.
             </p>
@@ -73,13 +80,18 @@ const Footer = () => {
             </div>
           </div>
 
-          {/* Links */}
-          <div>
-            <h4 className="font-semibold mb-4">Produto</h4>
+          {/* Serviços */}
+          <div className="flex flex-col items-center md:items-start">
+            <h4 className="font-semibold mb-4">Serviços</h4>
             <ul className="space-y-2">
-              {footerLinks.produto.map((link, index) => (
+              {footerLinks.servicos.map((link, index) => (
                 <li key={index}>
-                  <a href={link.href} className="text-sm text-muted-foreground hover:text-primary transition-colors">
+                  <a 
+                    href={link.href} 
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    className="text-sm text-muted-foreground hover:text-primary transition-colors"
+                  >
                     {link.label}
                   </a>
                 </li>
@@ -87,7 +99,8 @@ const Footer = () => {
             </ul>
           </div>
 
-          <div>
+          {/* Empresa */}
+          <div className="flex flex-col items-center md:items-start">
             <h4 className="font-semibold mb-4">Empresa</h4>
             <ul className="space-y-2">
               {footerLinks.empresa.map((link, index) => (
@@ -100,33 +113,37 @@ const Footer = () => {
             </ul>
           </div>
 
-          <div>
-            <h4 className="font-semibold mb-4">Suporte</h4>
-            <ul className="space-y-2">
-              {footerLinks.suporte.map((link, index) => (
-                <li key={index}>
-                  <a href={link.href} className="text-sm text-muted-foreground hover:text-primary transition-colors">
-                    {link.label}
-                  </a>
-                </li>
-              ))}
-            </ul>
+          {/* Google Badge */}
+          <div className="flex flex-col items-center md:items-start">
+            <h4 className="font-semibold mb-4">Avaliações</h4>
+            <a 
+              href="https://www.google.com/search?q=megabitz+tecnologia&sourceid=chrome&ie=UTF-8#lrd=0x997e75742ac2a9:0x7eadf9bd117d7cb,1,,,," 
+              target="_blank" 
+              rel="noopener noreferrer"
+              className="hover:opacity-80 transition-opacity"
+            >
+              <img 
+                src={googleStars} 
+                alt="Google 5 Estrelas" 
+                className="h-20 w-auto"
+              />
+            </a>
           </div>
         </div>
 
         <div className="pt-8 border-t border-border">
-          <div className="flex flex-col md:flex-row justify-between items-center gap-4">
+          <div className="flex flex-col md:flex-row justify-between items-center gap-4 text-center md:text-left">
             <p className="text-sm text-muted-foreground">
               © 2024 Megabitz Tecnologia. Todos os direitos reservados.
             </p>
             <div className="flex gap-6">
-              <a href="#" className="text-sm text-muted-foreground hover:text-primary transition-colors">
+              <a href="/privacidade" className="text-sm text-muted-foreground hover:text-primary transition-colors">
                 Privacidade
               </a>
-              <a href="#" className="text-sm text-muted-foreground hover:text-primary transition-colors">
+              <a href="/termos" className="text-sm text-muted-foreground hover:text-primary transition-colors">
                 Termos
               </a>
-              <a href="#" className="text-sm text-muted-foreground hover:text-primary transition-colors">
+              <a href="/cookies" className="text-sm text-muted-foreground hover:text-primary transition-colors">
                 Cookies
               </a>
             </div>
