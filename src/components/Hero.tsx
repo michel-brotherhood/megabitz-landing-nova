@@ -220,7 +220,7 @@ const Hero = () => {
               </div>
             </div>
             
-            <div className="pt-4 sm:pt-6 lg:pt-2 animate-fade-in flex justify-center lg:justify-start" style={{ animationDelay: '0.4s' }}>
+            <div className="pt-4 sm:pt-6 lg:pt-0 animate-fade-in flex justify-center lg:justify-start" style={{ animationDelay: '0.4s' }}>
               <a 
                 href="https://api.whatsapp.com/send/?phone=552136497932&text&type=phone_number&app_absent=0"
                 target="_blank"
