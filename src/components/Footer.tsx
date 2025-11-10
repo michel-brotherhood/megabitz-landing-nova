@@ -36,16 +36,14 @@ const Footer = () => {
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8 mb-12 text-center md:text-left">
           {/* Brand */}
           <div className="space-y-4 flex flex-col items-center md:items-start">
-            <div className="flex flex-col items-center md:items-start gap-4 w-full">
-              <img 
-                src={megabitzLogo} 
-                alt="Megabitz Tecnologia" 
-                className="h-12 w-auto"
-              />
-              <p className="text-sm text-muted-foreground">
-                TI sem drama. Segurança de verdade para sua empresa.
-              </p>
-            </div>
+            <img 
+              src={megabitzLogo} 
+              alt="Megabitz Tecnologia" 
+              className="h-12 w-auto md:ml-0"
+            />
+            <p className="text-sm text-muted-foreground">
+              TI sem drama. Segurança de verdade para sua empresa.
+            </p>
             <div className="space-y-1 text-sm text-muted-foreground w-full">
               <p className="font-medium">CNPJ: 10.610.465/0001-18</p>
               <p>Rua Barão de São Francisco, 373</p>
