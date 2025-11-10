@@ -8,11 +8,11 @@ const AboutMegabitz = () => {
 
   return (
     <section id="sobre" className="py-16 md:py-24 px-4 bg-gradient-to-b from-background to-muted/10">
-      <div className="container mx-auto">
+      <div className="container mx-auto px-4">
         <div className="max-w-7xl mx-auto">
-          <div className="grid md:grid-cols-2 gap-8 md:gap-12 items-center animate-fade-in">
+          <div className="grid grid-cols-1 md:grid-cols-2 gap-8 md:gap-12 items-center animate-fade-in">
             {/* Text Content - Left */}
-            <div className="space-y-4 md:space-y-6">
+            <div className="space-y-4 md:space-y-6 order-2 md:order-1">
               <h2 className="text-3xl sm:text-4xl md:text-5xl font-bold">
                 <span className="glow-text">Sobre a</span>
                 <br />
@@ -37,17 +37,19 @@ const AboutMegabitz = () => {
             </div>
 
             {/* Video - Right */}
-            <div className="relative rounded-lg overflow-hidden max-w-full">
-              <video 
-                src={teamVideo}
-                autoPlay
-                loop
-                muted
-                playsInline
-                className="w-full h-auto max-w-full object-cover"
-              >
-                Seu navegador não suporta vídeos.
-              </video>
+            <div className="relative rounded-lg overflow-hidden w-full order-1 md:order-2">
+              <div className="aspect-video w-full">
+                <video 
+                  src={teamVideo}
+                  autoPlay
+                  loop
+                  muted
+                  playsInline
+                  className="w-full h-full object-cover"
+                >
+                  Seu navegador não suporta vídeos.
+                </video>
+              </div>
             </div>
           </div>
         </div>
