@@ -197,7 +197,7 @@ const Hero = () => {
             </div>
 
             {/* Título */}
-            <h1 className="text-3xl sm:text-4xl md:text-5xl lg:text-5xl font-bold leading-tight animate-fade-in">
+            <h1 className="text-3xl sm:text-4xl md:text-5xl lg:text-5xl font-bold leading-tight animate-fade-in lg:mb-6">
               <span className="block text-white mb-1">Seu parceiro de</span>
               <span className="block text-white mb-1">Outsourcing de TI</span>
               <span className="block text-white">no Rio</span>
