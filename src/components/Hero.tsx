@@ -185,9 +185,9 @@ const Hero = () => {
       <div className="container relative z-10 mx-auto px-4 sm:px-6 py-20 sm:py-8">
         <div className="grid lg:grid-cols-2 gap-8 lg:gap-12 items-center min-h-[calc(100vh-8rem)]">
           {/* Left Column - Content */}
-          <div className="space-y-6 sm:space-y-8 lg:space-y-6 text-center lg:text-left">
+          <div className="space-y-2 sm:space-y-3 lg:space-y-6 text-center lg:text-left">
             {/* Mobile - Foto acima do título */}
-            <div className="lg:hidden flex justify-center animate-fade-in relative">
+            <div className="lg:hidden flex justify-center animate-fade-in relative mb-1">
               <img 
                 src={professionalPhoto} 
                 alt="Especialista Megabitz" 
@@ -197,7 +197,7 @@ const Hero = () => {
             </div>
 
             {/* Título */}
-            <h1 className="text-3xl sm:text-4xl md:text-5xl lg:text-5xl font-bold leading-tight animate-fade-in">
+            <h1 className="text-3xl sm:text-4xl md:text-5xl lg:text-6xl font-bold leading-tight animate-fade-in">
               <span className="block text-white mb-1">Seu parceiro de</span>
               <span className="block text-white mb-1">Outsourcing de TI</span>
               <span className="block text-white">no Rio</span>
