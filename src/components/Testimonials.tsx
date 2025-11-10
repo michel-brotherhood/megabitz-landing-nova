@@ -1,5 +1,6 @@
 import { Star, ChevronLeft, ChevronRight } from "lucide-react";
 import { useState } from "react";
+import userAvatar from "@/assets/user-avatar.png";
 
 const Testimonials = () => {
   const [currentIndex, setCurrentIndex] = useState(0);
@@ -46,11 +47,11 @@ const Testimonials = () => {
           <div className="text-center mb-12 animate-fade-in">
             <div className="flex justify-center gap-2 mb-6">
               {[...Array(5)].map((_, i) => (
-                <Star key={i} className="w-8 h-8 fill-[#FF6B35] text-[#FF6B35]" />
+                <Star key={i} className="w-8 h-8 fill-[#6be4e4] text-[#6be4e4]" />
               ))}
             </div>
             <h2 className="text-4xl md:text-5xl font-bold mb-4">
-              O Que Nossos <span style={{ color: '#FF6B35' }}>Clientes Dizem</span>
+              O Que Nossos <span style={{ color: '#6be4e4' }}>Clientes Dizem</span>
             </h2>
             <p className="text-lg text-foreground/70">
               Avaliações reais de clientes satisfeitos com nossos produtos e serviços
@@ -66,17 +67,16 @@ const Testimonials = () => {
               >
                 {/* Avatar and Name */}
                 <div className="flex items-start gap-4 mb-4">
-                  <div 
-                    className="w-14 h-14 rounded-full flex items-center justify-center text-white font-bold text-lg flex-shrink-0"
-                    style={{ backgroundColor: '#FF6B35' }}
-                  >
-                    {testimonial.avatar}
-                  </div>
+                  <img
+                    src={userAvatar}
+                    alt={testimonial.name}
+                    className="w-14 h-14 rounded-full object-cover flex-shrink-0"
+                  />
                   <div className="flex-1 min-w-0">
                     <h3 className="font-bold text-foreground mb-1">{testimonial.name}</h3>
                     <div className="flex gap-1 mb-1">
                       {[...Array(testimonial.rating)].map((_, i) => (
-                        <Star key={i} className="w-4 h-4 fill-[#FF6B35] text-[#FF6B35]" />
+                        <Star key={i} className="w-4 h-4 fill-[#6be4e4] text-[#6be4e4]" />
                       ))}
                     </div>
                     <p className="text-sm text-foreground/60">{testimonial.time}</p>
@@ -85,7 +85,7 @@ const Testimonials = () => {
                 
                 {/* Quote and Text */}
                 <div className="relative">
-                  <span className="text-6xl text-[#FF6B35]/20 absolute -top-4 -left-2 font-serif leading-none">"</span>
+                  <span className="text-6xl text-[#6be4e4]/20 absolute -top-4 -left-2 font-serif leading-none">"</span>
                   <p className="text-foreground/80 leading-relaxed relative z-10 pl-6">
                     {testimonial.text}
                   </p>
@@ -98,7 +98,7 @@ const Testimonials = () => {
           <div className="flex items-center justify-center gap-4 mb-12 animate-fade-in" style={{ animationDelay: '0.4s' }}>
             <button
               onClick={handlePrev}
-              className="w-10 h-10 rounded-lg border-2 border-[#FF6B35]/30 text-[#FF6B35] hover:bg-[#FF6B35]/10 transition-all duration-300 flex items-center justify-center"
+              className="w-10 h-10 rounded-lg border-2 border-[#6be4e4]/30 text-[#6be4e4] hover:bg-[#6be4e4]/10 transition-all duration-300 flex items-center justify-center"
               aria-label="Anterior"
             >
               <ChevronLeft className="w-5 h-5" />
@@ -111,8 +111,8 @@ const Testimonials = () => {
                   onClick={() => setCurrentIndex(index)}
                   className={`h-2 rounded-full transition-all duration-300 ${
                     index === currentIndex 
-                      ? 'w-8 bg-[#FF6B35]' 
-                      : 'w-2 bg-[#FF6B35]/30'
+                      ? 'w-8 bg-[#6be4e4]' 
+                      : 'w-2 bg-[#6be4e4]/30'
                   }`}
                   aria-label={`Ir para slide ${index + 1}`}
                 />
@@ -121,7 +121,7 @@ const Testimonials = () => {
 
             <button
               onClick={handleNext}
-              className="w-10 h-10 rounded-lg border-2 border-[#FF6B35]/30 text-[#FF6B35] hover:bg-[#FF6B35]/10 transition-all duration-300 flex items-center justify-center"
+              className="w-10 h-10 rounded-lg border-2 border-[#6be4e4]/30 text-[#6be4e4] hover:bg-[#6be4e4]/10 transition-all duration-300 flex items-center justify-center"
               aria-label="Próximo"
             >
               <ChevronRight className="w-5 h-5" />
@@ -132,20 +132,20 @@ const Testimonials = () => {
           <div 
             className="flex items-center justify-center gap-8 p-8 rounded-2xl border-2 max-w-2xl mx-auto animate-fade-in"
             style={{ 
-              borderColor: '#FF6B35',
-              backgroundColor: 'rgba(255, 107, 53, 0.05)',
+              borderColor: '#6be4e4',
+              backgroundColor: 'rgba(107, 228, 228, 0.05)',
               animationDelay: '0.6s'
             }}
           >
             <div className="text-center">
-              <div className="text-4xl md:text-5xl font-bold mb-2" style={{ color: '#FF6B35' }}>
+              <div className="text-4xl md:text-5xl font-bold mb-2" style={{ color: '#6be4e4' }}>
                 5.0
               </div>
               <p className="text-sm text-foreground/70">Nota no Google</p>
             </div>
-            <div className="h-16 w-px bg-[#FF6B35]/30" />
+            <div className="h-16 w-px bg-[#6be4e4]/30" />
             <div className="text-center">
-              <div className="text-4xl md:text-5xl font-bold mb-2" style={{ color: '#FF6B35' }}>
+              <div className="text-4xl md:text-5xl font-bold mb-2" style={{ color: '#6be4e4' }}>
                 86
               </div>
               <p className="text-sm text-foreground/70">Avaliações</p>

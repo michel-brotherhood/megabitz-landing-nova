@@ -39,7 +39,7 @@ const Footer = () => {
             <img 
               src={megabitzLogo} 
               alt="Megabitz Tecnologia" 
-              className="h-12 w-auto md:ml-0"
+              className="h-12 w-auto md:-ml-4"
             />
             <p className="text-sm text-muted-foreground">
               TI sem drama. Segurança de verdade para sua empresa.
