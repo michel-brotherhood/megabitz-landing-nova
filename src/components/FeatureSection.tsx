@@ -1,4 +1,3 @@
-import { Button } from "@/components/ui/button";
 import { Check } from "lucide-react";
 
 interface FeatureSectionProps {
@@ -77,9 +76,42 @@ const FeatureSection = ({
                 ))}
               </ul>
               
-              <Button variant="hero" size="lg" className="hover:scale-105 transition-all duration-300">
-                Saiba Mais
-              </Button>
+              <a 
+                href="https://wa.me/552136497932?text=Olá,%20gostaria%20de%20saber%20mais%20sobre%20os%20serviços%20da%20Megabitz"
+                target="_blank"
+                rel="noopener noreferrer"
+                className="relative inline-block px-8 sm:px-12 py-3 sm:py-4 text-sm sm:text-[15px] font-bold rounded-2xl outline-none transition-all duration-300 uppercase cursor-pointer"
+                style={{
+                  color: '#6BE4E4',
+                  backgroundColor: 'rgb(30, 80, 80)',
+                  border: '.25em solid #6BE4E4',
+                  boxShadow: '0 0 1em .25em #6BE4E4, 0 0 4em 1em rgba(107, 228, 228, 0.6), inset 0 0 .75em .25em #6BE4E4',
+                  textShadow: '0 0 .5em #6BE4E4'
+                }}
+                onMouseEnter={(e) => {
+                  e.currentTarget.style.color = 'rgb(30, 80, 80)';
+                  e.currentTarget.style.backgroundColor = '#6BE4E4';
+                  e.currentTarget.style.boxShadow = '0 0 1em .25em #6BE4E4, 0 0 4em 2em rgba(107, 228, 228, 0.6), inset 0 0 .75em .25em #6BE4E4';
+                }}
+                onMouseLeave={(e) => {
+                  e.currentTarget.style.color = '#6BE4E4';
+                  e.currentTarget.style.backgroundColor = 'rgb(30, 80, 80)';
+                  e.currentTarget.style.boxShadow = '0 0 1em .25em #6BE4E4, 0 0 4em 1em rgba(107, 228, 228, 0.6), inset 0 0 .75em .25em #6BE4E4';
+                }}
+                onMouseDown={(e) => {
+                  e.currentTarget.style.boxShadow = '0 0 0.6em .25em #6BE4E4, 0 0 2.5em 2em rgba(107, 228, 228, 0.6), inset 0 0 .5em .25em #6BE4E4';
+                }}
+              >
+                Falar com um especialista
+                <span 
+                  className="absolute top-[120%] left-0 h-full w-full opacity-70 pointer-events-none"
+                  style={{
+                    backgroundColor: 'rgba(107, 228, 228, 0.6)',
+                    filter: 'blur(2em)',
+                    transform: 'perspective(1.5em) rotateX(35deg) scale(1, .6)'
+                  }}
+                />
+              </a>
             </div>
           </div>
         </div>

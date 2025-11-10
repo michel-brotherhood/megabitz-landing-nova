@@ -28,10 +28,25 @@ const ContactForm = () => {
       return;
     }
 
-    // In a real app, you would send this to your backend
+    // Create WhatsApp message with form data
+    const message = `Olá! Meu nome é ${formData.nome}.
+${formData.empresa ? `Empresa: ${formData.empresa}` : ''}
+${formData.colaboradores ? `Número de colaboradores: ${formData.colaboradores}` : ''}
+${formData.computadores ? `Número de computadores: ${formData.computadores}` : ''}
+Telefone: ${formData.telefone}
+Email: ${formData.email}
+
+Gostaria de falar com um especialista sobre os serviços da Megabitz.`;
+
+    const whatsappUrl = `https://wa.me/552136497932?text=${encodeURIComponent(message)}`;
+    
+    // Open WhatsApp
+    window.open(whatsappUrl, '_blank');
+
+    // Show success toast
     toast({
-      title: "Proposta solicitada!",
-      description: "Entraremos em contato em breve.",
+      title: "Redirecionando para WhatsApp!",
+      description: "Você será conectado com um especialista.",
     });
 
     // Reset form
@@ -150,9 +165,40 @@ const ContactForm = () => {
               </div>
             </div>
 
-            <Button type="submit" variant="hero" size="lg" className="w-full hover:scale-105 transition-all duration-300">
-              Receber proposta em 2 minutos
-            </Button>
+            <button 
+              type="submit"
+              className="relative w-full px-8 sm:px-12 py-3 sm:py-4 text-sm sm:text-[15px] font-bold rounded-2xl outline-none transition-all duration-300 uppercase cursor-pointer"
+              style={{
+                color: '#6BE4E4',
+                backgroundColor: 'rgb(30, 80, 80)',
+                border: '.25em solid #6BE4E4',
+                boxShadow: '0 0 1em .25em #6BE4E4, 0 0 4em 1em rgba(107, 228, 228, 0.6), inset 0 0 .75em .25em #6BE4E4',
+                textShadow: '0 0 .5em #6BE4E4'
+              }}
+              onMouseEnter={(e) => {
+                e.currentTarget.style.color = 'rgb(30, 80, 80)';
+                e.currentTarget.style.backgroundColor = '#6BE4E4';
+                e.currentTarget.style.boxShadow = '0 0 1em .25em #6BE4E4, 0 0 4em 2em rgba(107, 228, 228, 0.6), inset 0 0 .75em .25em #6BE4E4';
+              }}
+              onMouseLeave={(e) => {
+                e.currentTarget.style.color = '#6BE4E4';
+                e.currentTarget.style.backgroundColor = 'rgb(30, 80, 80)';
+                e.currentTarget.style.boxShadow = '0 0 1em .25em #6BE4E4, 0 0 4em 1em rgba(107, 228, 228, 0.6), inset 0 0 .75em .25em #6BE4E4';
+              }}
+              onMouseDown={(e) => {
+                e.currentTarget.style.boxShadow = '0 0 0.6em .25em #6BE4E4, 0 0 2.5em 2em rgba(107, 228, 228, 0.6), inset 0 0 .5em .25em #6BE4E4';
+              }}
+            >
+              Falar agora com um especialista
+              <span 
+                className="absolute top-[120%] left-0 h-full w-full opacity-70 pointer-events-none"
+                style={{
+                  backgroundColor: 'rgba(107, 228, 228, 0.6)',
+                  filter: 'blur(2em)',
+                  transform: 'perspective(1.5em) rotateX(35deg) scale(1, .6)'
+                }}
+              />
+            </button>
           </form>
         </div>
       </div>
