@@ -6,6 +6,7 @@ import { Textarea } from "@/components/ui/textarea";
 import { Checkbox } from "@/components/ui/checkbox";
 import { useState } from "react";
 import { useToast } from "@/hooks/use-toast";
+import { supabase } from "@/integrations/supabase/client";
 import heroVideo from "@/assets/hero-video.mp4";
 
 const Hero = () => {
@@ -22,6 +23,7 @@ const Hero = () => {
 
   const [errors, setErrors] = useState<Record<string, string>>({});
   const [touched, setTouched] = useState<Record<string, boolean>>({});
+  const [isSubmitting, setIsSubmitting] = useState(false);
 
   const validateField = (name: string, value: string | boolean) => {
     let error = "";
@@ -103,7 +105,7 @@ const Hero = () => {
     }
   };
 
-  const handleSubmit = (e: React.FormEvent) => {
+  const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
     
     // Validate all fields
@@ -128,36 +130,49 @@ const Hero = () => {
       return;
     }
 
-    // Create WhatsApp message
-    const message = `Olá! Meu nome é ${formData.nome}.
-Empresa: ${formData.empresa}
-Tamanho da empresa: ${formData.tamanhoEmpresa}
-Telefone: ${formData.telefone}
-Email: ${formData.email}
-Desafio: ${formData.desafio}
+    setIsSubmitting(true);
 
-Gostaria de falar com um consultor sobre os serviços da Megabitz.`;
+    try {
+      const { data, error } = await supabase.functions.invoke('send-contact-email', {
+        body: {
+          name: formData.nome,
+          email: formData.email,
+          phone: formData.telefone,
+          company: formData.empresa,
+          employees: formData.tamanhoEmpresa,
+          challenges: formData.desafio,
+        }
+      });
 
-    const whatsappUrl = `https://api.whatsapp.com/send/?phone=552136497932&text=${encodeURIComponent(message)}&type=phone_number&app_absent=0`;
-    window.open(whatsappUrl, '_blank');
+      if (error) throw error;
 
-    toast({
-      title: "Redirecionando para WhatsApp!",
-      description: "Você será conectado com um consultor.",
-    });
+      toast({
+        title: "Mensagem enviada!",
+        description: "Em breve entraremos em contato.",
+      });
 
-    // Reset form
-    setFormData({
-      nome: "",
-      empresa: "",
-      tamanhoEmpresa: "",
-      telefone: "",
-      email: "",
-      desafio: "",
-      aceitaPolitica: false
-    });
-    setErrors({});
-    setTouched({});
+      // Reset form
+      setFormData({
+        nome: "",
+        empresa: "",
+        tamanhoEmpresa: "",
+        telefone: "",
+        email: "",
+        desafio: "",
+        aceitaPolitica: false
+      });
+      setErrors({});
+      setTouched({});
+    } catch (error) {
+      console.error("Error sending email:", error);
+      toast({
+        title: "Erro ao enviar",
+        description: "Tente novamente mais tarde.",
+        variant: "destructive"
+      });
+    } finally {
+      setIsSubmitting(false);
+    }
   };
 
   return (
@@ -377,7 +392,8 @@ Gostaria de falar com um consultor sobre os serviços da Megabitz.`;
 
               <button 
                 type="submit"
-                className="relative w-full px-8 py-3 text-sm font-bold rounded-2xl outline-none transition-all duration-300 uppercase cursor-pointer"
+                disabled={isSubmitting}
+                className="relative w-full px-8 py-3 text-sm font-bold rounded-2xl outline-none transition-all duration-300 uppercase cursor-pointer disabled:opacity-50 disabled:cursor-not-allowed"
                 style={{
                   color: '#6BE4E4',
                   backgroundColor: 'rgb(30, 80, 80)',
@@ -399,7 +415,7 @@ Gostaria de falar com um consultor sobre os serviços da Megabitz.`;
                   e.currentTarget.style.boxShadow = '0 0 0.6em .25em #6BE4E4, 0 0 2.5em 2em rgba(107, 228, 228, 0.6), inset 0 0 .5em .25em #6BE4E4';
                 }}
               >
-                Falar agora com um especialista
+                {isSubmitting ? "Enviando..." : "Falar agora com um especialista"}
                 <span 
                   className="absolute top-[120%] left-0 h-full w-full opacity-70 pointer-events-none"
                   style={{
