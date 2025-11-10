@@ -185,7 +185,7 @@ const Hero = () => {
       <div className="container relative z-10 mx-auto px-4 sm:px-6 py-20 sm:py-8">
         <div className="grid lg:grid-cols-2 gap-8 lg:gap-12 items-center min-h-[calc(100vh-8rem)]">
           {/* Left Column - Content */}
-          <div className="space-y-6 sm:space-y-8 text-center lg:text-left">
+          <div className="space-y-6 sm:space-y-8 lg:space-y-0 text-center lg:text-left">
             {/* Mobile - Foto acima do título */}
             <div className="lg:hidden flex justify-center animate-fade-in relative">
               <img 
@@ -220,7 +220,7 @@ const Hero = () => {
               </div>
             </div>
             
-            <div className="pt-4 sm:pt-6 lg:pt-0 animate-fade-in flex justify-center lg:justify-start" style={{ animationDelay: '0.4s' }}>
+            <div className="pt-4 sm:pt-6 lg:pt-0 lg:-mt-1 animate-fade-in flex justify-center lg:justify-start" style={{ animationDelay: '0.4s' }}>
               <a 
                 href="https://api.whatsapp.com/send/?phone=552136497932&text&type=phone_number&app_absent=0"
                 target="_blank"
