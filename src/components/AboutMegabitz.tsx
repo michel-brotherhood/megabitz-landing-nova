@@ -37,14 +37,14 @@ const AboutMegabitz = () => {
             </div>
 
             {/* Video - Right */}
-            <div className="relative rounded-lg overflow-hidden">
+            <div className="relative rounded-lg overflow-hidden max-w-full">
               <video 
                 src={teamVideo}
                 autoPlay
                 loop
                 muted
                 playsInline
-                className="w-full h-auto"
+                className="w-full h-auto max-w-full object-cover"
               >
                 Seu navegador não suporta vídeos.
               </video>
