@@ -25,7 +25,7 @@ const Differentials = () => {
   ];
 
   return (
-    <section className="py-24 px-4 bg-gradient-to-b from-background to-muted/10">
+    <section id="diferenciais" className="py-24 px-4 bg-gradient-to-b from-background to-muted/10">
       <div className="container mx-auto">
         <div className="max-w-5xl mx-auto">
           <div className="text-center mb-16">

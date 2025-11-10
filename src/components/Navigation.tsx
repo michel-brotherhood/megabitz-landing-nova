@@ -21,17 +21,15 @@ const Navigation = () => {
   // Detectar seção ativa ao rolar
   useEffect(() => {
     const handleScroll = () => {
-      const sections = ['#', '#sobre', '#recursos', '#contato'];
-      const scrollPosition = window.scrollY + 100;
+      const sections = ['#sobre', '#beneficios', '#diferenciais', '#contato'];
+      const scrollPosition = window.scrollY + 150;
 
       for (let i = sections.length - 1; i >= 0; i--) {
         const section = sections[i];
-        const element = section === '#' 
-          ? document.body 
-          : document.querySelector(section);
+        const element = document.querySelector(section);
         
         if (element) {
-          const offsetTop = section === '#' ? 0 : (element as HTMLElement).offsetTop;
+          const offsetTop = (element as HTMLElement).offsetTop;
           if (scrollPosition >= offsetTop) {
             setActiveSection(section);
             break;
@@ -46,10 +44,25 @@ const Navigation = () => {
     return () => window.removeEventListener('scroll', handleScroll);
   }, []);
 
+  // Scroll suave ao clicar nos links
+  const handleNavClick = (e: React.MouseEvent<HTMLAnchorElement>, href: string) => {
+    e.preventDefault();
+    const element = document.querySelector(href);
+    if (element) {
+      const offset = 80; // Altura do menu fixo
+      const elementPosition = (element as HTMLElement).offsetTop - offset;
+      window.scrollTo({
+        top: elementPosition,
+        behavior: 'smooth'
+      });
+    }
+    setIsOpen(false);
+  };
+
   const menuItems = [
-    { label: "Início", href: "#" },
-    { label: "Sobre", href: "#sobre" },
-    { label: "Recursos", href: "#recursos" },
+    { label: "A Megabitz", href: "#sobre" },
+    { label: "Benefícios", href: "#beneficios" },
+    { label: "Diferenciais", href: "#diferenciais" },
     { label: "Contato", href: "#contato" }
   ];
 
@@ -73,6 +86,7 @@ const Navigation = () => {
                 <a
                   key={index}
                   href={item.href}
+                  onClick={(e) => handleNavClick(e, item.href)}
                   className={`text-sm font-semibold hover:text-primary transition-all duration-300 tracking-wider uppercase relative ${
                     activeSection === item.href ? 'text-primary' : 'text-white'
                   }`}
@@ -144,8 +158,8 @@ const Navigation = () => {
                 <a
                   key={index}
                   href={item.href}
+                  onClick={(e) => handleNavClick(e, item.href)}
                   className="text-2xl font-semibold text-foreground hover:text-primary transition-colors text-center py-3"
-                  onClick={() => setIsOpen(false)}
                 >
                   {item.label}
                 </a>
