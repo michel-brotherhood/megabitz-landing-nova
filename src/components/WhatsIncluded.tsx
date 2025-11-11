@@ -2,15 +2,12 @@ import { CheckCircle2 } from "lucide-react";
 
 const WhatsIncluded = () => {
   const features = [
-    "Suporte remoto e presencial com tempos de resposta definidos",
-    "Manutenção preventiva (patches, atualizações, limpeza lógica)",
-    "Monitoramento 24/7 de servidores, rede e endpoints",
-    "Segurança gerenciada: EDR/antivírus, firewall/UTM, antispam, hardening, MFA",
-    "Backup & DR: 3-2-1, cópia externa, testes de restauração, runbook",
-    "Gestão de ativos: inventário, licenças e ciclo de vida",
-    "Rede & Wi-Fi corporativo: segmentação, VLAN, QoS, saúde da infra",
-    "Documentação de TI: topologia, acessos e procedimentos",
-    "Relatórios mensais com KPIs e roadmap técnico"
+    "Gestão de Infraestrutura: administração e gerenciamento completo de redes e servidores",
+    "Manutenção de Equipamentos: preventiva e corretiva de computadores e notebooks",
+    "Suporte Ilimitado: helpdesk e suporte remoto para toda a equipe",
+    "Atendimento Presencial: técnico no local quando necessário",
+    "Segurança Física: manutenção de CFTV (câmeras e DVR)",
+    "Visão de Futuro: consultoria estratégica em infraestrutura de TI"
   ];
 
   return (
@@ -19,10 +16,10 @@ const WhatsIncluded = () => {
         <div className="max-w-4xl mx-auto">
           <div className="text-center mb-16">
             <h2 className="text-4xl md:text-5xl font-bold mb-6">
-              <span className="gradient-text">O Que Está Incluso</span>
+              <span className="gradient-text">Seu Contrato de Manutenção Megabitz</span>
             </h2>
             <p className="text-lg text-foreground/80">
-              Cobertura completa para sua infraestrutura de TI
+              Uma garantia de produtividade: assumimos a complexidade técnica para que seu negócio não sofra com paradas e prejuízos.
             </p>
           </div>
 

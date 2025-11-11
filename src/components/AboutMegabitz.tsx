@@ -14,18 +14,30 @@ const AboutMegabitz = () => {
             {/* Text Content - Left */}
             <div className="space-y-4 md:space-y-6 order-2 md:order-1">
               <h2 className="text-3xl sm:text-4xl md:text-5xl font-bold">
-                <span className="glow-text">Sobre a</span>
+                <span className="glow-text">Quem Somos:</span>
                 <br />
-                <span className="gradient-text">Megabitz</span>
+                <span className="gradient-text">A Megabitz e o Seu Negócio</span>
               </h2>
-              <div className="space-y-3 md:space-y-4 text-sm sm:text-base md:text-lg text-foreground/80 leading-relaxed">
-                <p>
-                  A MEGABITZ Tecnologia tem a Solução para diversas barreiras que limitam o resultado da sua empresa.
-                </p>
-                <p>
-                  Especialistas dedicados, prontos para entrar em campo e destravar seu roadmap.
-                  Menos burocracia, mais entrega: alocação ágil, qualidade consistente e custos sob controle.
-                </p>
+              <p className="text-lg sm:text-xl text-foreground/90 leading-relaxed">
+                A Megabitz existe para garantir que a tecnologia seja sua aliada, não sua dor de cabeça.
+              </p>
+              <div className="space-y-4 text-sm sm:text-base md:text-lg text-foreground/80 leading-relaxed">
+                <div>
+                  <h3 className="font-bold text-foreground mb-2">Soluções completas e sem burocracia</h3>
+                  <p>Nossa equipe entra em campo para assumir toda a gestão de TI, destravar problemas e evitar que você perca tempo com o técnico.</p>
+                </div>
+                <div>
+                  <h3 className="font-bold text-foreground mb-2">Qualidade e custo sob controle</h3>
+                  <p>Com nossos contratos de manutenção, você garante entrega consistente e o melhor custo-benefício.</p>
+                </div>
+                <div>
+                  <h3 className="font-bold text-foreground mb-2">Compromisso</h3>
+                  <p>Nossa prioridade é a tranquilidade da sua gestão.</p>
+                </div>
+                <div>
+                  <h3 className="font-bold text-foreground mb-2">+16 anos de experiência</h3>
+                  <p>Histórico sólido atendendo operações que não podem parar.</p>
+                </div>
               </div>
               <Button 
                 onClick={handleWhatsAppClick}
