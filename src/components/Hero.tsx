@@ -228,7 +228,20 @@ const Hero = () => {
                     href="https://api.whatsapp.com/send/?phone=552136497932&text&type=phone_number&app_absent=0"
                     target="_blank"
                     rel="noopener noreferrer"
-                    className="relative inline-flex items-center gap-2 px-8 sm:px-10 py-3 sm:py-3.5 text-sm sm:text-[15px] font-bold rounded-xl outline-none transition-all duration-300 uppercase bg-white text-background hover:bg-primary hover:text-background hover:shadow-[0_0_30px_rgba(107,228,228,0.5)] hover:scale-105"
+                    className="relative inline-flex items-center gap-2 px-8 sm:px-12 py-3 sm:py-4 text-sm sm:text-[15px] font-bold rounded-2xl outline-none transition-all duration-300 uppercase cursor-pointer"
+                    style={{
+                      color: '#6BE4E4',
+                      backgroundColor: 'rgb(30, 80, 80)',
+                      border: '.25em solid #6BE4E4'
+                    }}
+                    onMouseEnter={(e) => {
+                      e.currentTarget.style.color = 'rgb(30, 80, 80)';
+                      e.currentTarget.style.backgroundColor = '#6BE4E4';
+                    }}
+                    onMouseLeave={(e) => {
+                      e.currentTarget.style.color = '#6BE4E4';
+                      e.currentTarget.style.backgroundColor = 'rgb(30, 80, 80)';
+                    }}
                   >
                     <MessageCircle className="w-5 h-5" />
                     Agendar conversa
@@ -243,7 +256,20 @@ const Hero = () => {
                 href="https://api.whatsapp.com/send/?phone=552136497932&text&type=phone_number&app_absent=0"
                 target="_blank"
                 rel="noopener noreferrer"
-                className="relative inline-flex items-center gap-2 px-8 sm:px-10 py-3 sm:py-3.5 text-sm sm:text-[15px] font-bold rounded-xl outline-none transition-all duration-300 uppercase bg-white text-background hover:bg-primary hover:text-background hover:shadow-[0_0_30px_rgba(107,228,228,0.5)] hover:scale-105"
+                className="relative inline-flex items-center gap-2 px-8 sm:px-12 py-3 sm:py-4 text-sm sm:text-[15px] font-bold rounded-2xl outline-none transition-all duration-300 uppercase cursor-pointer"
+                style={{
+                  color: '#6BE4E4',
+                  backgroundColor: 'rgb(30, 80, 80)',
+                  border: '.25em solid #6BE4E4'
+                }}
+                onMouseEnter={(e) => {
+                  e.currentTarget.style.color = 'rgb(30, 80, 80)';
+                  e.currentTarget.style.backgroundColor = '#6BE4E4';
+                }}
+                onMouseLeave={(e) => {
+                  e.currentTarget.style.color = '#6BE4E4';
+                  e.currentTarget.style.backgroundColor = 'rgb(30, 80, 80)';
+                }}
               >
                 <MessageCircle className="w-5 h-5" />
                 Agendar conversa
