@@ -251,7 +251,7 @@ const Hero = () => {
                     }}
                   >
                     <MessageCircle className="w-5 h-5" />
-                    Dúvidas? Vamos Conversar
+                    Agendar conversa
                     <span 
                       className="absolute top-[120%] left-0 h-full w-full opacity-70 pointer-events-none"
                       style={{
@@ -294,7 +294,7 @@ const Hero = () => {
                 }}
               >
                 <MessageCircle className="w-5 h-5" />
-                Dúvidas? Vamos Conversar
+                Agendar conversa
                 <span 
                   className="absolute top-[120%] left-0 h-full w-full opacity-70 pointer-events-none"
                   style={{
@@ -494,7 +494,7 @@ const Hero = () => {
                   e.currentTarget.style.boxShadow = '0 0 0.6em .25em #6BE4E4, 0 0 2.5em 2em rgba(107, 228, 228, 0.6), inset 0 0 .5em .25em #6BE4E4';
                 }}
               >
-                {isSubmitting ? "Enviando..." : "Falar agora com um especialista"}
+                {isSubmitting ? "Enviando..." : "Falar com consultor"}
                 <span 
                   className="absolute top-[120%] left-0 h-full w-full opacity-70 pointer-events-none"
                   style={{
