@@ -228,7 +228,7 @@ const Hero = () => {
                     href="https://api.whatsapp.com/send/?phone=552136497932&text&type=phone_number&app_absent=0"
                     target="_blank"
                     rel="noopener noreferrer"
-                    className="relative inline-flex items-center gap-2 px-8 sm:px-10 py-3 sm:py-3.5 text-sm sm:text-[15px] font-semibold rounded-xl outline-none transition-all duration-300 uppercase border-2 border-primary/40 bg-transparent text-primary hover:bg-primary/10 hover:border-primary hover:shadow-[0_0_20px_rgba(107,228,228,0.3)]"
+                    className="relative inline-flex items-center gap-2 px-8 sm:px-10 py-3 sm:py-3.5 text-sm sm:text-[15px] font-bold rounded-xl outline-none transition-all duration-300 uppercase bg-white text-background hover:bg-primary hover:text-background hover:shadow-[0_0_30px_rgba(107,228,228,0.5)] hover:scale-105"
                   >
                     <MessageCircle className="w-5 h-5" />
                     Agendar conversa
@@ -243,7 +243,7 @@ const Hero = () => {
                 href="https://api.whatsapp.com/send/?phone=552136497932&text&type=phone_number&app_absent=0"
                 target="_blank"
                 rel="noopener noreferrer"
-                className="relative inline-flex items-center gap-2 px-8 sm:px-10 py-3 sm:py-3.5 text-sm sm:text-[15px] font-semibold rounded-xl outline-none transition-all duration-300 uppercase border-2 border-primary/40 bg-transparent text-primary hover:bg-primary/10 hover:border-primary hover:shadow-[0_0_20px_rgba(107,228,228,0.3)]"
+                className="relative inline-flex items-center gap-2 px-8 sm:px-10 py-3 sm:py-3.5 text-sm sm:text-[15px] font-bold rounded-xl outline-none transition-all duration-300 uppercase bg-white text-background hover:bg-primary hover:text-background hover:shadow-[0_0_30px_rgba(107,228,228,0.5)] hover:scale-105"
               >
                 <MessageCircle className="w-5 h-5" />
                 Agendar conversa
