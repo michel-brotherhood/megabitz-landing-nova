@@ -14,11 +14,12 @@ const Hero = () => {
   const { toast } = useToast();
   const [formData, setFormData] = useState({
     nome: "",
-    empresa: "",
-    tamanhoEmpresa: "",
-    telefone: "",
     email: "",
-    desafio: "",
+    telefone: "",
+    cargo: "",
+    desafioTI: "",
+    melhorHorario: "",
+    preferenciaContato: "",
     aceitaPolitica: false
   });
 
@@ -42,15 +43,15 @@ const Hero = () => {
         if (!value) error = "Telefone é obrigatório";
         else if (typeof value === "string" && value.replace(/\D/g, "").length < 10) error = "Telefone inválido";
         break;
-      case "empresa":
-        if (!value) error = "Nome da empresa é obrigatório";
-        break;
-      case "tamanhoEmpresa":
-        if (!value) error = "Selecione o tamanho da empresa";
-        break;
-      case "desafio":
-        if (!value) error = "Descreva seu desafio";
+      case "desafioTI":
+        if (!value) error = "Descreva seu desafio de TI";
         else if (typeof value === "string" && value.length < 10) error = "Descreva melhor seu desafio (mín. 10 caracteres)";
+        break;
+      case "melhorHorario":
+        if (!value) error = "Selecione o melhor horário";
+        break;
+      case "preferenciaContato":
+        if (!value) error = "Selecione a preferência de contato";
         break;
       case "aceitaPolitica":
         if (!value) error = "Você deve aceitar a política de privacidade";
@@ -90,11 +91,11 @@ const Hero = () => {
     }
   };
 
-  const handleSelectChange = (value: string) => {
-    setFormData({ ...formData, tamanhoEmpresa: value });
-    if (touched.tamanhoEmpresa) {
-      const error = validateField("tamanhoEmpresa", value);
-      setErrors({ ...errors, tamanhoEmpresa: error });
+  const handleSelectChange = (name: string, value: string) => {
+    setFormData({ ...formData, [name]: value });
+    if (touched[name]) {
+      const error = validateField(name, value);
+      setErrors({ ...errors, [name]: error });
     }
   };
 
@@ -139,9 +140,10 @@ const Hero = () => {
           name: formData.nome,
           email: formData.email,
           phone: formData.telefone,
-          company: formData.empresa,
-          employees: formData.tamanhoEmpresa,
-          challenges: formData.desafio,
+          cargo: formData.cargo,
+          challenges: formData.desafioTI,
+          bestTime: formData.melhorHorario,
+          contactPreference: formData.preferenciaContato,
         }
       });
 
@@ -334,100 +336,111 @@ const Hero = () => {
                 )}
               </div>
 
-              <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
-                <div className="space-y-2">
-                  <Label htmlFor="telefone" className="text-white">Telefone/WhatsApp *</Label>
-                  <Input 
-                    id="telefone" 
-                    name="telefone"
-                    value={formData.telefone}
-                    onChange={handleChange}
-                    onBlur={() => handleBlur("telefone")}
-                    type="tel"
-                    placeholder="(11) 99999-9999"
-                    required
-                    maxLength={15}
-                    className={`bg-background/50 border-primary/20 ${errors.telefone && touched.telefone ? 'border-red-500' : ''}`}
-                  />
-                  {errors.telefone && touched.telefone && (
-                    <p className="text-red-500 text-xs mt-1">{errors.telefone}</p>
-                  )}
-                </div>
-
-                <div className="space-y-2">
-                  <Label htmlFor="email" className="text-white">E-mail *</Label>
-                  <Input 
-                    id="email" 
-                    name="email"
-                    value={formData.email}
-                    onChange={handleChange}
-                    onBlur={() => handleBlur("email")}
-                    type="email"
-                    placeholder="seu@email.com"
-                    required
-                    className={`bg-background/50 border-primary/20 ${errors.email && touched.email ? 'border-red-500' : ''}`}
-                  />
-                  {errors.email && touched.email && (
-                    <p className="text-red-500 text-xs mt-1">{errors.email}</p>
-                  )}
-                </div>
-              </div>
-
-              <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
-                <div className="space-y-2">
-                  <Label htmlFor="empresa" className="text-white">Nome da Empresa *</Label>
-                  <Input 
-                    id="empresa" 
-                    name="empresa"
-                    value={formData.empresa}
-                    onChange={handleChange}
-                    onBlur={() => handleBlur("empresa")}
-                    placeholder="Nome da empresa"
-                    required
-                    className={`bg-background/50 border-primary/20 ${errors.empresa && touched.empresa ? 'border-red-500' : ''}`}
-                  />
-                  {errors.empresa && touched.empresa && (
-                    <p className="text-red-500 text-xs mt-1">{errors.empresa}</p>
-                  )}
-                </div>
-
-                <div className="space-y-2">
-                  <Label htmlFor="tamanhoEmpresa" className="text-white">Tamanho da Empresa *</Label>
-                  <Select value={formData.tamanhoEmpresa} onValueChange={handleSelectChange}>
-                    <SelectTrigger 
-                      className={`bg-background/50 border-primary/20 text-white ${errors.tamanhoEmpresa && touched.tamanhoEmpresa ? 'border-red-500' : ''}`}
-                      onBlur={() => handleBlur("tamanhoEmpresa")}
-                    >
-                      <SelectValue placeholder="Selecione o tamanho" />
-                    </SelectTrigger>
-                    <SelectContent className="bg-card border-primary/20 z-50">
-                      <SelectItem value="5-11">5-11 funcionários</SelectItem>
-                      <SelectItem value="50-200">50-200 funcionários</SelectItem>
-                      <SelectItem value="300-500">300-500 funcionários</SelectItem>
-                      <SelectItem value="500+">Acima de 500 funcionários</SelectItem>
-                    </SelectContent>
-                  </Select>
-                  {errors.tamanhoEmpresa && touched.tamanhoEmpresa && (
-                    <p className="text-red-500 text-xs mt-1">{errors.tamanhoEmpresa}</p>
-                  )}
-                </div>
+              <div className="space-y-2">
+                <Label htmlFor="email" className="text-white">E-mail *</Label>
+                <Input 
+                  id="email" 
+                  name="email"
+                  value={formData.email}
+                  onChange={handleChange}
+                  onBlur={() => handleBlur("email")}
+                  type="email"
+                  placeholder="seu@email.com"
+                  required
+                  className={`bg-background/50 border-primary/20 ${errors.email && touched.email ? 'border-red-500' : ''}`}
+                />
+                {errors.email && touched.email && (
+                  <p className="text-red-500 text-xs mt-1">{errors.email}</p>
+                )}
               </div>
 
               <div className="space-y-2">
-                <Label htmlFor="desafio" className="text-white">Qual seu problema/desafio? *</Label>
-                <Textarea 
-                  id="desafio" 
-                  name="desafio"
-                  value={formData.desafio}
+                <Label htmlFor="telefone" className="text-white">Telefone/WhatsApp *</Label>
+                <Input 
+                  id="telefone" 
+                  name="telefone"
+                  value={formData.telefone}
                   onChange={handleChange}
-                  onBlur={() => handleBlur("desafio")}
+                  onBlur={() => handleBlur("telefone")}
+                  type="tel"
+                  placeholder="(11) 99999-9999"
+                  required
+                  maxLength={15}
+                  className={`bg-background/50 border-primary/20 ${errors.telefone && touched.telefone ? 'border-red-500' : ''}`}
+                />
+                {errors.telefone && touched.telefone && (
+                  <p className="text-red-500 text-xs mt-1">{errors.telefone}</p>
+                )}
+              </div>
+
+              <div className="space-y-2">
+                <Label htmlFor="cargo" className="text-white">Cargo (opcional)</Label>
+                <Input 
+                  id="cargo" 
+                  name="cargo"
+                  value={formData.cargo}
+                  onChange={handleChange}
+                  placeholder="Seu cargo na empresa"
+                  className="bg-background/50 border-primary/20"
+                />
+              </div>
+
+              <div className="space-y-2">
+                <Label htmlFor="desafioTI" className="text-white">Descreva seu desafio de TI *</Label>
+                <Textarea 
+                  id="desafioTI" 
+                  name="desafioTI"
+                  value={formData.desafioTI}
+                  onChange={handleChange}
+                  onBlur={() => handleBlur("desafioTI")}
                   placeholder="Descreva seu desafio ou problema de TI..."
                   required
                   rows={4}
-                  className={`bg-background/50 border-primary/20 ${errors.desafio && touched.desafio ? 'border-red-500' : ''}`}
+                  className={`bg-background/50 border-primary/20 ${errors.desafioTI && touched.desafioTI ? 'border-red-500' : ''}`}
                 />
-                {errors.desafio && touched.desafio && (
-                  <p className="text-red-500 text-xs mt-1">{errors.desafio}</p>
+                {errors.desafioTI && touched.desafioTI && (
+                  <p className="text-red-500 text-xs mt-1">{errors.desafioTI}</p>
+                )}
+              </div>
+
+              <div className="space-y-2">
+                <Label htmlFor="melhorHorario" className="text-white">Melhor horário para contato *</Label>
+                <Select value={formData.melhorHorario} onValueChange={(value) => handleSelectChange("melhorHorario", value)}>
+                  <SelectTrigger 
+                    className={`bg-background/50 border-primary/20 text-white ${errors.melhorHorario && touched.melhorHorario ? 'border-red-500' : ''}`}
+                    onBlur={() => handleBlur("melhorHorario")}
+                  >
+                    <SelectValue placeholder="Selecione o horário" />
+                  </SelectTrigger>
+                  <SelectContent className="bg-card border-primary/20 z-50">
+                    <SelectItem value="manha">Manhã (8h - 12h)</SelectItem>
+                    <SelectItem value="tarde">Tarde (12h - 18h)</SelectItem>
+                    <SelectItem value="noite">Noite (18h - 20h)</SelectItem>
+                    <SelectItem value="qualquer">Qualquer horário</SelectItem>
+                  </SelectContent>
+                </Select>
+                {errors.melhorHorario && touched.melhorHorario && (
+                  <p className="text-red-500 text-xs mt-1">{errors.melhorHorario}</p>
+                )}
+              </div>
+
+              <div className="space-y-2">
+                <Label htmlFor="preferenciaContato" className="text-white">Preferência de contato *</Label>
+                <Select value={formData.preferenciaContato} onValueChange={(value) => handleSelectChange("preferenciaContato", value)}>
+                  <SelectTrigger 
+                    className={`bg-background/50 border-primary/20 text-white ${errors.preferenciaContato && touched.preferenciaContato ? 'border-red-500' : ''}`}
+                    onBlur={() => handleBlur("preferenciaContato")}
+                  >
+                    <SelectValue placeholder="Selecione a preferência" />
+                  </SelectTrigger>
+                  <SelectContent className="bg-card border-primary/20 z-50">
+                    <SelectItem value="telefone">Telefone</SelectItem>
+                    <SelectItem value="whatsapp">WhatsApp</SelectItem>
+                    <SelectItem value="email">E-mail</SelectItem>
+                  </SelectContent>
+                </Select>
+                {errors.preferenciaContato && touched.preferenciaContato && (
+                  <p className="text-red-500 text-xs mt-1">{errors.preferenciaContato}</p>
                 )}
               </div>
 
