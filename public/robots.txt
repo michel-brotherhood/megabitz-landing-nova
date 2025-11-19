@@ -1,3 +1,10 @@
+# Megabitz Tecnologia - Robots.txt
+User-agent: *
+Allow: /
+Disallow: /admin/
+Disallow: /api/
+
+# Specific bots
 User-agent: Googlebot
 Allow: /
 
@@ -10,5 +17,5 @@ Allow: /
 User-agent: facebookexternalhit
 Allow: /
 
-User-agent: *
-Allow: /
+# Sitemap
+Sitemap: https://megabitz.com.br/sitemap.xml
