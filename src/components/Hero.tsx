@@ -228,6 +228,8 @@ const Hero = () => {
                     href="https://api.whatsapp.com/send/?phone=552136497932&text&type=phone_number&app_absent=0"
                     target="_blank"
                     rel="noopener noreferrer"
+                    data-gtm-element="whatsapp-cta"
+                    data-gtm-location="hero-desktop"
                     className="relative inline-flex items-center gap-2 px-8 sm:px-12 py-3 sm:py-4 text-sm sm:text-[15px] font-bold rounded-2xl outline-none transition-all duration-300 uppercase cursor-pointer"
                     style={{
                       color: '#6BE4E4',
@@ -256,6 +258,8 @@ const Hero = () => {
                 href="https://api.whatsapp.com/send/?phone=552136497932&text&type=phone_number&app_absent=0"
                 target="_blank"
                 rel="noopener noreferrer"
+                data-gtm-element="whatsapp-cta"
+                data-gtm-location="hero-mobile"
                 className="relative inline-flex items-center gap-2 px-8 sm:px-12 py-3 sm:py-4 text-sm sm:text-[15px] font-bold rounded-2xl outline-none transition-all duration-300 uppercase cursor-pointer"
                 style={{
                   color: '#6BE4E4',

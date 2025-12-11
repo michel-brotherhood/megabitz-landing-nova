@@ -243,5 +243,36 @@
   <body>
     <div id="root"></div>
     <script type="module" src="/src/main.tsx"></script>
+    
+    <!-- WhatsApp CTA Click Tracking -->
+    <script>
+      // Inicializa dataLayer
+      window.dataLayer = window.dataLayer || [];
+      
+      // Event listener para cliques em CTAs do WhatsApp
+      document.addEventListener('click', function(event) {
+        var target = event.target.closest('[data-gtm-element="whatsapp-cta"]');
+        
+        if (target) {
+          window.dataLayer.push({
+            'event': 'whatsapp_cta_click',
+            'gtm_element': 'whatsapp-cta',
+            'cta_location': target.getAttribute('data-gtm-location') || 'unknown',
+            'cta_text': target.innerText || target.getAttribute('aria-label') || 'WhatsApp',
+            'page_url': window.location.href,
+            'page_path': window.location.pathname,
+            'timestamp': new Date().toISOString(),
+            'user_agent': navigator.userAgent,
+            'screen_width': window.innerWidth,
+            'click_position': {
+              'x': event.clientX,
+              'y': event.clientY
+            }
+          });
+          
+          console.log('📊 WhatsApp CTA Click tracked:', target.getAttribute('data-gtm-location'));
+        }
+      });
+    </script>
   </body>
 </html>
