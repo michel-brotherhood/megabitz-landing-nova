@@ -1,111 +1,106 @@
 import { serve } from "https://deno.land/std@0.190.0/http/server.ts";
+import { Resend } from "npm:resend@2.0.0";
+
+const resend = new Resend(Deno.env.get("RESEND_API_KEY"));
 
 const corsHeaders = {
-  'Access-Control-Allow-Origin': '*',
-  'Access-Control-Allow-Headers': 'authorization, x-client-info, apikey, content-type',
+  "Access-Control-Allow-Origin": "*",
+  "Access-Control-Allow-Headers":
+    "authorization, x-client-info, apikey, content-type",
 };
 
 interface ContactFormData {
   name: string;
   email: string;
   phone: string;
-  company: string;
-  employees?: string;
-  challenges?: string;
+  position?: string;
+  challenges: string;
+  bestTime: string;
+  contactPreference: string;
 }
 
 const handler = async (req: Request): Promise<Response> => {
   // Handle CORS preflight requests
-  if (req.method === 'OPTIONS') {
+  if (req.method === "OPTIONS") {
     return new Response(null, { headers: corsHeaders });
   }
 
   try {
     const formData: ContactFormData = await req.json();
     
-    console.log('Sending email with data:', formData);
-
-    const smtpHost = Deno.env.get('SMTP_HOST') || '';
-    const smtpPort = parseInt(Deno.env.get('SMTP_PORT') || '465');
-    const smtpUser = Deno.env.get('SMTP_USER') || '';
-    const smtpPassword = Deno.env.get('SMTP_PASSWORD') || '';
-
-    const emailContent = `Nova mensagem de contato recebida:
-
-Nome: ${formData.name}
-Email: ${formData.email}
-Telefone: ${formData.phone}
-Empresa: ${formData.company}
-${formData.employees ? `Tamanho da Empresa: ${formData.employees}` : ''}
-${formData.challenges ? `Desafios: ${formData.challenges}` : ''}
-
----
-Este email foi enviado automaticamente do formulário de contato do site.`;
-
-    // Create connection
-    const conn = await Deno.connectTls({
-      hostname: smtpHost,
-      port: smtpPort,
+    console.log("Received contact form submission:", {
+      name: formData.name,
+      email: formData.email,
+      phone: formData.phone,
     });
 
-    const encoder = new TextEncoder();
-    const decoder = new TextDecoder();
+    const bestTimeLabels: Record<string, string> = {
+      morning: "Manhã (9h - 12h)",
+      afternoon: "Tarde (13h - 18h)",
+      evening: "Noite (18h - 21h)",
+    };
 
-    // Helper function to send command and read response
-    async function sendCommand(conn: Deno.TlsConn, command: string): Promise<string> {
-      await conn.write(encoder.encode(command + '\r\n'));
-      const buffer = new Uint8Array(1024);
-      const n = await conn.read(buffer);
-      if (!n) throw new Error("No response from server");
-      return decoder.decode(buffer.subarray(0, n));
-    }
+    const contactPreferenceLabels: Record<string, string> = {
+      phone: "Telefone",
+      whatsapp: "WhatsApp",
+      email: "E-mail",
+    };
 
-    try {
-      // Read initial greeting
-      const buffer = new Uint8Array(1024);
-      await conn.read(buffer);
+    const emailHtml = `
+      <div style="font-family: Arial, sans-serif; max-width: 600px; margin: 0 auto; padding: 20px;">
+        <h1 style="color: #1a1a2e; border-bottom: 2px solid #6BE4E4; padding-bottom: 10px;">
+          Nova Solicitação de Contato
+        </h1>
+        
+        <div style="background-color: #f8f9fa; padding: 20px; border-radius: 8px; margin: 20px 0;">
+          <h2 style="color: #333; margin-top: 0;">Dados do Lead</h2>
+          
+          <p><strong>Nome:</strong> ${formData.name}</p>
+          <p><strong>E-mail:</strong> <a href="mailto:${formData.email}">${formData.email}</a></p>
+          <p><strong>Telefone:</strong> <a href="tel:${formData.phone}">${formData.phone}</a></p>
+          ${formData.position ? `<p><strong>Cargo:</strong> ${formData.position}</p>` : ""}
+        </div>
+        
+        <div style="background-color: #e8f4f4; padding: 20px; border-radius: 8px; margin: 20px 0;">
+          <h2 style="color: #333; margin-top: 0;">Desafio de TI</h2>
+          <p style="white-space: pre-wrap;">${formData.challenges}</p>
+        </div>
+        
+        <div style="background-color: #f0f0f0; padding: 20px; border-radius: 8px; margin: 20px 0;">
+          <h2 style="color: #333; margin-top: 0;">Preferências de Contato</h2>
+          <p><strong>Melhor horário:</strong> ${bestTimeLabels[formData.bestTime] || formData.bestTime}</p>
+          <p><strong>Preferência:</strong> ${contactPreferenceLabels[formData.contactPreference] || formData.contactPreference}</p>
+        </div>
+        
+        <hr style="border: none; border-top: 1px solid #ddd; margin: 20px 0;">
+        <p style="color: #666; font-size: 12px;">
+          Este email foi enviado automaticamente pelo formulário de contato do site Megabitz.
+        </p>
+      </div>
+    `;
 
-      // SMTP handshake
-      await sendCommand(conn, `EHLO ${smtpHost}`);
-      await sendCommand(conn, `AUTH LOGIN`);
-      await sendCommand(conn, btoa(smtpUser));
-      await sendCommand(conn, btoa(smtpPassword));
-      await sendCommand(conn, `MAIL FROM:<${smtpUser}>`);
-      await sendCommand(conn, `RCPT TO:<megabitz@agenciattx.com.br>`);
-      await sendCommand(conn, `DATA`);
+    const emailResponse = await resend.emails.send({
+      from: "Megabitz Site <contato@megabitz.com.br>",
+      to: ["comercial@megabitz.com.br"],
+      subject: `Nova solicitação de contato - ${formData.name}`,
+      html: emailHtml,
+      reply_to: formData.email,
+    });
 
-      // Send email content
-      const emailMessage = `From: ${smtpUser}\r\nTo: megabitz@agenciattx.com.br\r\nSubject: Nova mensagem de ${formData.name} - ${formData.company}\r\nContent-Type: text/plain; charset=utf-8\r\n\r\n${emailContent}\r\n.\r\n`;
-      await conn.write(encoder.encode(emailMessage));
-      
-      // Read final response
-      await conn.read(buffer);
-      
-      // Close connection
-      await sendCommand(conn, 'QUIT');
-      conn.close();
+    console.log("Email sent successfully:", emailResponse);
 
-      console.log("Email sent successfully");
-
-      return new Response(
-        JSON.stringify({ success: true }),
-        { 
-          headers: { ...corsHeaders, 'Content-Type': 'application/json' },
-          status: 200,
-        },
-      );
-    } catch (smtpError) {
-      conn.close();
-      throw smtpError;
-    }
+    return new Response(JSON.stringify({ success: true, data: emailResponse }), {
+      status: 200,
+      headers: { "Content-Type": "application/json", ...corsHeaders },
+    });
   } catch (error: any) {
-    console.error('Error sending email:', error);
+    console.error("Error sending email:", error);
     return new Response(
       JSON.stringify({ error: error.message }),
-      { 
-        headers: { ...corsHeaders, 'Content-Type': 'application/json' },
+      {
         status: 500,
-      },
+        headers: { "Content-Type": "application/json", ...corsHeaders },
+      }
     );
   }
 };
