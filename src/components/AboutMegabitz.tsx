@@ -41,6 +41,8 @@ const AboutMegabitz = () => {
               </div>
               <Button 
                 onClick={handleWhatsAppClick}
+                data-gtm-element="whatsapp-cta"
+                data-gtm-location="about-section"
                 size="lg"
                 className="mt-4 md:mt-6 w-full sm:w-auto text-sm sm:text-base whitespace-normal h-auto py-3 px-4"
               >
